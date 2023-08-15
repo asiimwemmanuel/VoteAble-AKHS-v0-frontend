@@ -4,7 +4,7 @@ import './Header.css';
 import { Link, NavLink } from 'react-router-dom';
 import Menu from '@mui/icons-material/Menu';
 import DropDown from '../Drop-down/DropDown.jsx';
-import Context from '../../Context/Context.js';
+import Context from '../../Context/Context.jsx';
 // import Cookies from 'js-cookie';
 import Menuu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -131,12 +131,12 @@ function Header(props) {
               >
                 <MenuItem>Polls</MenuItem>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/my-poll-chains"
                 style={{ textDecoration: 'none', color: 'black' }}
               >
                 <MenuItem>Poll Chains</MenuItem>
-              </NavLink>
+              </NavLink> */}
             </Menuu>
           </div>
         ) : (

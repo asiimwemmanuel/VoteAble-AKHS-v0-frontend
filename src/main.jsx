@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login/Login.jsx';
 import MyPolls from './pages/MyPolls/MyPolls.jsx';
-
+import ContextProvider from './Context/ContextProvider.jsx';
 import Poll from './pages/Polls/Poll/Poll.jsx';
 import CreatePoll from './pages/Polls/Create-poll/CreatePoll.jsx';
 import Results from './pages/Results/Results.jsx';
@@ -75,8 +75,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <ContextProvider> */}
-    <RouterProvider router={router} />
-    {/* </ContextProvider> */}
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>
 );

@@ -37,7 +37,6 @@ function PollChains() {
         'https://voteable-backend.onrender.com/v1/my-poll-chains',
         {
           method: 'GET',
-          credentials: 'include',
         }
       );
       const data = await res.json();
@@ -51,7 +50,7 @@ function PollChains() {
       }
       console.log(data);
 
-      if (data.error === 'You have to login / signup first') {
+      if (data.error === 'Login First to access polls') {
         setSignupFirstErr('You have to login first');
       }
       if (data.error === 'No polls found') {
@@ -302,7 +301,7 @@ function PollChains() {
                   >
                     <button className="Btn">View Poll Chain</button>
                   </Link>
-                  <button
+                  {/* <button
                     className="dBtn"
                     onClick={async () => {
                       const res = await fetch(
@@ -320,7 +319,7 @@ function PollChains() {
                     }}
                   >
                     Delete Chain
-                  </button>
+                  </button> */}
                   <div>
                     <button
                       className="Btn2"
@@ -345,7 +344,7 @@ function PollChains() {
                       <RWebShare
                         data={{
                           text: `VoteAble - ${poll.name}`,
-                          url: `https://voteable-app.onrender.com{ poll.name }`,
+                          url: `https://voteable-app.onrender.com/${poll.name}`,
                         }}
                         onClick={() => console.log('shared successfully!')}
                       >

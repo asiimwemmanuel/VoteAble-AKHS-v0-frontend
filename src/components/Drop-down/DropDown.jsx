@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './DropDown.css';
 import { NavLink } from 'react-router-dom';
 import avatarPic from '../../assets/VoteAble logo.png';
-import Context from '../../Context/Context.js';
+import Context from '../../Context/Context.jsx';
 import Menuu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import avatarImg from '../../assets/avatarIcon.jpeg';
@@ -124,7 +124,7 @@ function DropDown(props) {
               >
                 <MenuItem>Polls</MenuItem>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/my-poll-chains"
                 style={{ textDecoration: 'none', color: 'black' }}
                 onClick={() => {
@@ -132,7 +132,7 @@ function DropDown(props) {
                 }}
               >
                 <MenuItem>Poll Chains</MenuItem>
-              </NavLink>
+              </NavLink> */}
             </Menuu>
           </div>
         ) : (

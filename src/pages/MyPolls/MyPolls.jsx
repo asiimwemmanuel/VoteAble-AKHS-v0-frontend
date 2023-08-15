@@ -598,10 +598,8 @@ function Home() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                     style={{ marginTop: '50px', marginLeft: '1%' }}
-                    // `http://192.168.3.21:3000/poll/${poll._id}`
                   >
                     <div className="pollc">
-                      {' '}
                       <QRCode
                         value={`https://voteable-app.onrender.com/${poll._id}`}
                         style={{ marginTop: '25px' }}
