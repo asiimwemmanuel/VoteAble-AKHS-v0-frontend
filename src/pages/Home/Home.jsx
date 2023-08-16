@@ -7,7 +7,6 @@ import logo from '../../assets/VoteAble header image 2.png';
 // import anime from 'animejs/lib/anime.es.js';
 import CookieConsent from 'react-cookie-consent';
 import './Home.css';
-import Footer from '../../components/Footer/Footer.jsx';
 // import ScrollToTop from "react-scroll-to-top";
 
 function Home() {
