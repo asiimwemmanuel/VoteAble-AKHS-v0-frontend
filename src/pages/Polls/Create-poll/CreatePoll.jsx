@@ -133,6 +133,7 @@ function CreatePoll() {
               placeholder="Question"
               className="qInput"
               value={question}
+              style={{ fontSize: '17px' }}
               onChange={handleQuestionChange}
               onBlur={() => {
                 if (!question) {
@@ -172,6 +173,7 @@ function CreatePoll() {
             <input
               type="text"
               placeholder="Option"
+              style={{ fontSize: '17px' }}
               className="qInput"
               value={option}
               onBlur={() => {

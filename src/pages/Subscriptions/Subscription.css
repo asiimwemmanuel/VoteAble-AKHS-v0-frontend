@@ -12,7 +12,7 @@
   padding-top: 0px;
   background: #ffffff;
   border-radius: 15px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -34,7 +34,7 @@
   display: inline-block;
   border: none;
   width: 90%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin-top: 5px;
   margin-left: 20px;
 }

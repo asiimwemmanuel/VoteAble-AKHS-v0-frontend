@@ -167,7 +167,10 @@ function Home() {
                         through digital democracy!" */}
           </p>
         </div>
-        <div className="pollc" style={{ height: '340px' }}>
+        <div
+          className="pollc"
+          style={{ height: '340px', paddingRight: '20px' }}
+        >
           <h1>Results in seconds not hours</h1>
           <p>
             Send a poll and get organised results in donut-chart form, within
