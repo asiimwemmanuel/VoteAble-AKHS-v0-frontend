@@ -64,7 +64,10 @@ function Home() {
   }, []);
   return (
     <div>
-      <div className="FlexBG">
+      <div
+        className="FlexBG"
+        style={{ backgroundImage: 'linear-gradient(180deg,#17005c, #4600b6)' }}
+      >
         <Header />
         {signupFirstErr && (
           <div className="pollc">

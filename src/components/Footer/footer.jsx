@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer style={footerStyles}>
       <div style={contentStyles}>
-        <img
+        {/* <img
           src={Joshua}
           alt="JMuks"
           style={{
@@ -15,9 +15,9 @@ function Footer() {
             borderRadius: '150px',
             transform: 'rotate(28deg)',
           }}
-        />
+        /> */}
         <h1 style={headingStyles}>VoteAble, Inc &copy;</h1>
-        <p style={textStyles}>
+        {/* <p style={textStyles}>
           At VoteAble Inc, we are dedicated to providing a cutting-edge voting
           platform that empowers students to make informed decisions through
           secure and accessible voting. With a strong commitment to transparency
@@ -32,7 +32,7 @@ function Footer() {
           background in Web development & AI programming, I am excited to lead a
           team that shares the same vision of enhancing democratic participation
           through innovation.
-        </p>
+        </p> */}
       </div>
       <div style={socialStyles}>
         <a
@@ -57,7 +57,7 @@ function Footer() {
 
 // Styles
 const footerStyles = {
-  background: 'linear-gradient(180deg,#4600b6, #17005c)',
+  background: 'linear-gradient(180deg,#4600b6, #130149)',
   color: 'white',
   padding: '40px',
   display: 'flex',
@@ -72,9 +72,9 @@ const footerStyles = {
 const contentStyles = {
   maxWidth: '1000px',
   // margin: '0',
-  display: 'flex',
-  flexDirection: 'row',
-  width: '100%',
+  // display: 'flex',
+  // flexDirection: 'row',
+  // width: '100%',
 };
 
 const headingStyles = {

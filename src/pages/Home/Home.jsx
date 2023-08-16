@@ -154,7 +154,10 @@ function Home() {
         </div>
       </div>
       <div className="featureDescriptions">
-        <div className="featureDescription">
+        <div
+          className="featureDescription"
+          style={{ maxWidth: '400px', marginRight: '30px' }}
+        >
           <h1>Bringing Voting to You</h1>
           <p>
             Introducing VoteAble Your Voice, Your Choice! Bringing the power of
@@ -162,14 +165,20 @@ function Home() {
             future. Join the movement for a brighter tomorrow!
           </p>
         </div>
-        <div className="featureDescription">
+        <div
+          className="featureDescription"
+          style={{ maxWidth: '400px', marginRight: '30px' }}
+        >
           <h1>Results in Seconds, Not Hours</h1>
           <p>
             Send a poll and get organized results in donut-chart form, within
             seconds. We take care of the complications.
           </p>
         </div>
-        <div className="featureDescription">
+        <div
+          className="featureDescription"
+          style={{ maxWidth: '400px', marginRight: '30px' }}
+        >
           <h1>No More Voting in Labs</h1>
           <p>
             Unlock the Full Potential of Voting with VoteAble! Seamlessly
