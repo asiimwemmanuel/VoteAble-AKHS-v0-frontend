@@ -66,7 +66,7 @@ const footerStyles = {
   justifyContent: 'center',
   alignItems: 'center',
   paddingTop: '100px',
-  marginTop: '50px',
+  // marginTop: '50px',
 };
 
 const contentStyles = {
