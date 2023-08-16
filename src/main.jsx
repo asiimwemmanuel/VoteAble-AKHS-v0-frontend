@@ -18,7 +18,7 @@ import Home from './pages/Home/Home.jsx';
 import CreatePollChain from './pages/Polls/Create-Poll-Chain/CreatePollChain.jsx';
 import PollChains from './pages/Polls/PollChains/PollChains.jsx';
 import PollChain from './pages/Polls/Poll-Chain/PollChain.jsx';
-import Footer from './components/Footer/Footer.jsx';
+// import Footer from './components/Footer/Footer.jsx';
 
 // import App from './App'
 import './index.css';
