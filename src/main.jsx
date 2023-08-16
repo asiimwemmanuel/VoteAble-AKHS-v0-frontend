@@ -78,7 +78,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ContextProvider>
       <RouterProvider router={router} />
-      <Footer />
+      {/* <Footer /> */}
     </ContextProvider>
   </React.StrictMode>
 );

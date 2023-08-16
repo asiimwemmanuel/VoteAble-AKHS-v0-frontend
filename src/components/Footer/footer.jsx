@@ -51,6 +51,7 @@ const footerStyles = {
   color: 'white',
   padding: '40px',
   textAlign: 'center',
+  paddingTop: '100px',
 };
 
 const contentStyles = {
