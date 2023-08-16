@@ -66,22 +66,12 @@ function Home() {
     <div>
       <div className="FlexBG">
         <Header />
-        {signupFirstErr ? (
+        {signupFirstErr && (
           <div className="pollc">
             <h1>Login First to access polls</h1>
           </div>
-        ) : (
-          ''
         )}
         {isLoading && !signupFirstErr ? (
-          // <CircularProgress
-          //   style={{
-          //     color: "white",
-          //     position: "absolute",
-          //     top: "20%",
-          //     left: "40%",
-          //   }}
-          // />
           <div
             style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
           >

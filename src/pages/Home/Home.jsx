@@ -7,7 +7,7 @@ import logo from '../../assets/VoteAble header image 2.png';
 // import anime from 'animejs/lib/anime.es.js';
 import CookieConsent from 'react-cookie-consent';
 import './Home.css';
-import Footer from '../../components/Footer/footer.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 // import ScrollToTop from "react-scroll-to-top";
 
 function Home() {
@@ -42,6 +42,7 @@ function Home() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundImage: 'linear-gradient(135deg, #4600b6, #17005c)',
       }}
     >
       <Header />
@@ -153,38 +154,28 @@ function Home() {
           </h1>
         </div>
       </div>
-      <div className="hc">
-        <div className="pollc" style={{ paddingRight: '10px' }}>
-          <h1 style={{ paddingLeft: '10px' }}>Bringing Voting to you</h1>
+      <div className="featureDescriptions">
+        <div className="featureDescription">
+          <h1>Bringing Voting to You</h1>
           <p>
-            {/* VoteAble looks to meet your needs by simplifying the online voting process.
-                        VoteAble is purpose-built to work simply and beautifully for the everyday
-                        user and provide the best possible user experience. */}
             Introducing VoteAble Your Voice, Your Choice! Bringing the power of
             voting to students, igniting civic engagement and shaping the
             future. Join the movement for a brighter tomorrow!
-            {/* With VoteAble, students shape the path forward. Together, let's amplify our impact and drive change
-                        through digital democracy!" */}
           </p>
         </div>
-        <div
-          className="pollc"
-          style={{ height: '340px', paddingRight: '20px' }}
-        >
-          <h1>Results in seconds not hours</h1>
+        <div className="featureDescription">
+          <h1>Results in Seconds, Not Hours</h1>
           <p>
-            Send a poll and get organised results in donut-chart form, within
-            seconds. We take care of the complications, and make everything{' '}
-            <br />
-            <img src={logo} alt="VoteAble-logo" />
+            Send a poll and get organized results in donut-chart form, within
+            seconds. We take care of the complications.
           </p>
         </div>
-        <div className="pollc" style={{ paddingRight: '10px' }}>
-          <h1>No more voting in labs</h1>
+        <div className="featureDescription">
+          <h1>No More Voting in Labs</h1>
           <p>
             Unlock the Full Potential of Voting with VoteAble! Seamlessly
-            Navigate through a User-Friendly Interface. Enjoy a Spectrum of
-            Features from the comfort of your phones!
+            navigate through a user-friendly interface. Enjoy a spectrum of
+            features from the comfort of your phones!
           </p>
         </div>
       </div>

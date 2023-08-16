@@ -3,11 +3,11 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
-.svg3 {
-  height: 16vw;
-  margin-left: 10px;
-  margin-right: 10px;
+.featureDescriptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
 .hc {
@@ -17,6 +17,23 @@
   align-items: center;
 }
 
+.featureDescription {
+  color: white;
+  flex: 1;
+  padding: 0 10px;
+  margin-bottom: 50px;
+  margin-right: '20px';
+}
+.featureHeading {
+  font-size: 24px;
+  margin: 0 20px 50px 20px;
+}
+.svg3 {
+  height: 16vw;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 @media screen and (min-width: 550px) {
   .svg {
     height: 20vw;
@@ -24,6 +41,9 @@
 }
 
 @media screen and (max-width: 1020px) {
+  .featureDescriptions {
+    flex-direction: column;
+  }
   .hc {
     flex-direction: column;
   }
