@@ -1,11 +1,21 @@
 import React from 'react';
 import Svg2 from '../../assets/youtube-icon.png';
 import Svg3 from '../../assets/icons8-mail-48.png';
+import Joshua from '../../assets/Joshua.jpeg';
 
 function Footer() {
   return (
     <footer style={footerStyles}>
       <div style={contentStyles}>
+        <img
+          src={Joshua}
+          alt="JMuks"
+          style={{
+            height: '250px',
+            borderRadius: '150px',
+            transform: 'rotate(28deg)',
+          }}
+        />
         <h1 style={headingStyles}>VoteAble, Inc &copy;</h1>
         <p style={textStyles}>
           At VoteAble Inc, we are dedicated to providing a cutting-edge voting
@@ -47,16 +57,24 @@ function Footer() {
 
 // Styles
 const footerStyles = {
-  background: 'linear-gradient(135deg, #4600b6, #17005c)',
+  background: 'linear-gradient(180deg,#4600b6, #17005c)',
   color: 'white',
   padding: '40px',
+  display: 'flex',
+  flexDirection: 'column',
   textAlign: 'center',
+  justifyContent: 'center',
+  alignItems: 'center',
   paddingTop: '100px',
+  marginTop: '50px',
 };
 
 const contentStyles = {
   maxWidth: '1000px',
-  margin: '0 auto',
+  // margin: '0',
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
 };
 
 const headingStyles = {
@@ -67,6 +85,7 @@ const headingStyles = {
 const textStyles = {
   fontSize: '18px',
   marginBottom: '30px',
+  maxWidth: '700px',
 };
 
 const socialStyles = {

@@ -41,7 +41,7 @@ function Home() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: 'linear-gradient(135deg, #4600b6, #17005c)',
+        backgroundImage: 'linear-gradient(180deg,#17005c, #4600b6)',
       }}
     >
       <Header />
