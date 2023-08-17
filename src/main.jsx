@@ -19,6 +19,7 @@ import CreatePollChain from './pages/Polls/Create-Poll-Chain/CreatePollChain.jsx
 import PollChains from './pages/Polls/PollChains/PollChains.jsx';
 import PollChain from './pages/Polls/Poll-Chain/PollChain.jsx';
 import Footer from './components/Footer/footer.jsx';
+import PrivacyPolicy from './pages/Privacy-policy/Privacy.jsx';
 
 // import App from './App'
 import './index.css';
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: '/poll-chain/:id',
     element: <PollChain />,
+  },
+  {
+    path: '/privacy-policy',
+    element: <PrivacyPolicy />,
   },
 ]);
 
