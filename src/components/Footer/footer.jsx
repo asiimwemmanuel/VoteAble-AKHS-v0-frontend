@@ -16,23 +16,24 @@ function Footer() {
             transform: 'rotate(28deg)',
           }}
         /> */}
-        <h1 style={headingStyles}>VoteAble, Inc &copy;</h1>
-        {/* <p style={textStyles}>
-          At VoteAble Inc, we are dedicated to providing a cutting-edge voting
+        <h1 style={headingStyles}> &copy; VoteAble, Inc</h1>
+        <p style={textStyles}>
+          Everything is VoteAble
+          {/* At VoteAble Inc, we are dedicated to providing a cutting-edge voting
           platform that empowers students to make informed decisions through
           secure and accessible voting. With a strong commitment to transparency
           and fairness, we strive to revolutionize the way people engage in
-          democratic processes.
+          democratic processes. */}
           <br />
           <br />
-          Hi there 👋! I'm Joshua, the founder and visionary behind VoteAble. As
+          {/* Hi there 👋! I'm Joshua, the founder and visionary behind VoteAble. As
           a passionate advocate for technology-driven solutions, I embarked on
           this journey to create a platform that not only simplifies the voting
           experience but also ensures the integrity of each vote. With a
           background in Web development & AI programming, I am excited to lead a
           team that shares the same vision of enhancing democratic participation
-          through innovation.
-        </p> */}
+          through innovation. */}
+        </p>
       </div>
       <div style={socialStyles}>
         <a
@@ -41,7 +42,7 @@ function Footer() {
           rel="noreferrer"
         >
           <img src={Svg2} alt="Youtube-icon" style={iconStyles} />
-          <h2 style={linkStyles}>VoteAble Inc</h2>
+          <h2 style={linkStyles}>YouTube</h2>
         </a>
         <a href="mailto:voteable123@gmail.com" target="_blank" rel="noreferrer">
           <img src={Svg3} alt="Email-icon" style={iconStyles} />

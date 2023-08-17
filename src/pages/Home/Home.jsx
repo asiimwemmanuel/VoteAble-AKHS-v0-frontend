@@ -81,8 +81,9 @@ function Home() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            // flexWrap: 'wrap',
             alignItems: 'center',
-            margin: '10px',
+            margin: '20px',
           }}
           key="welc-1"
         >
@@ -104,7 +105,7 @@ function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            margin: '10px',
+            margin: '20px',
           }}
           key="welc-2"
         >
@@ -131,7 +132,7 @@ function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            margin: '10px',
+            margin: '20px',
           }}
           key="welc-3"
         >
@@ -156,7 +157,7 @@ function Home() {
       <div className="featureDescriptions">
         <div
           className="featureDescription"
-          style={{ maxWidth: '400px', marginRight: '30px' }}
+          style={{ maxWidth: '700px', marginRight: '10px', marginLeft: '10px' }}
         >
           <h1>Bringing Voting to You</h1>
           <p>
@@ -167,7 +168,7 @@ function Home() {
         </div>
         <div
           className="featureDescription"
-          style={{ maxWidth: '400px', marginRight: '30px' }}
+          style={{ maxWidth: '700px', marginRight: '10px', marginLeft: '10px' }}
         >
           <h1>Results in Seconds, Not Hours</h1>
           <p>
@@ -177,7 +178,7 @@ function Home() {
         </div>
         <div
           className="featureDescription"
-          style={{ maxWidth: '400px', marginRight: '30px' }}
+          style={{ maxWidth: '700px', marginRight: '10px', marginLeft: '10px' }}
         >
           <h1>No More Voting in Labs</h1>
           <p>
