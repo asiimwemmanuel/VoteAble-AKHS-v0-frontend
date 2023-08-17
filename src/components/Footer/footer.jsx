@@ -75,13 +75,20 @@ function Footer() {
         </div>
       </div>
       <div style={footerBottomStyles}>
-        You can learn more about our{' '}
+        You can learn more about our operations at the{' '}
         <a
           href="https://voteable-app.onrender.com"
-          style={{ textDecoration: 'none', color: 'white' }}
+          style={{
+            textDecoration: 'underline',
+            color: 'white',
+            fontWeight: '600',
+          }}
         >
           Privacy Policy
-        </a>
+        </a>{' '}
+        page
+        <br />
+        <br />
         &copy; {new Date().getFullYear()} VoteAble, Inc. All rights reserved.
       </div>
     </footer>
@@ -139,7 +146,7 @@ const linkStyles = {
 };
 
 const footerBottomStyles = {
-  textAlign: 'center',
+  textAlign: 'left',
   marginTop: '20px',
 };
 
