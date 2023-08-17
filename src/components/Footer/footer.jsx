@@ -36,18 +36,43 @@ function Footer() {
         </p>
       </div>
       <div style={socialStyles}>
-        <a
-          href="https://youtube.com/channel/UCI9hvu4GkGLKyOZFenvcvoA"
-          target="_blank"
-          rel="noreferrer"
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
           <img src={Svg2} alt="Youtube-icon" style={iconStyles} />
-          <h2 style={linkStyles}>YouTube</h2>
-        </a>
-        <a href="mailto:voteable123@gmail.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://youtube.com/channel/UCI9hvu4GkGLKyOZFenvcvoA"
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            <h2 style={linkStyles}>YouTube</h2>
+          </a>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '5px',
+          }}
+        >
           <img src={Svg3} alt="Email-icon" style={iconStyles} />
-          <h2 style={linkStyles}>Email us</h2>
-        </a>
+          <a
+            href="mailto:voteable123@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            <h2 style={linkStyles}>Email us</h2>
+          </a>
+        </div>
       </div>
       <div style={footerBottomStyles}>
         &copy; {new Date().getFullYear()} VoteAble, Inc. All rights reserved.
@@ -65,8 +90,8 @@ const footerStyles = {
   flexDirection: 'column',
   textAlign: 'center',
   justifyContent: 'center',
-  alignItems: 'center',
-  paddingTop: '100px',
+  alignItems: 'flex-start',
+  // paddingTop: '100px',
   // marginTop: '50px',
 };
 
@@ -80,25 +105,24 @@ const contentStyles = {
 
 const headingStyles = {
   fontSize: '36px',
-  marginBottom: '20px',
+  marginBottom: '-10px',
 };
 
 const textStyles = {
   fontSize: '18px',
-  marginBottom: '30px',
+  marginBottom: '-5px',
   maxWidth: '700px',
 };
 
 const socialStyles = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: '20px',
 };
 
 const iconStyles = {
-  marginRight: '100px',
+  marginRight: '10px',
 };
 
 const linkStyles = {
