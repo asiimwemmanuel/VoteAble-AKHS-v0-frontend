@@ -77,7 +77,7 @@ function Footer() {
       <div style={footerBottomStyles}>
         You can learn more about our operations at the{' '}
         <a
-          href="https://voteable-app.onrender.com"
+          href="https://voteable-app.onrender.com/privacy-policy"
           style={{
             textDecoration: 'underline',
             color: 'white',
