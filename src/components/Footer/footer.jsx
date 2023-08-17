@@ -75,6 +75,13 @@ function Footer() {
         </div>
       </div>
       <div style={footerBottomStyles}>
+        You can learn more about our{' '}
+        <a
+          href="https://voteable-app.onrender.com"
+          style={{ textDecoration: 'none', color: 'white' }}
+        >
+          Privacy Policy
+        </a>
         &copy; {new Date().getFullYear()} VoteAble, Inc. All rights reserved.
       </div>
     </footer>
