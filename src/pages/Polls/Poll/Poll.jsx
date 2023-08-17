@@ -82,7 +82,10 @@ function Poll(props) {
     }
   }
   return (
-    <div className="joinOuterContainer">
+    <div
+      className="joinOuterContainer"
+      style={{ backgroundImage: 'linear-gradient(180deg, #17005c, #17005c)' }}
+    >
       <Header />
       {isLoading ? (
         <CircularProgress

@@ -121,7 +121,10 @@ function CreatePoll() {
   };
 
   return (
-    <div className="joinOuterContainer">
+    <div
+      className="joinOuterContainer"
+      style={{ backgroundImage: 'linear-gradient(180deg, #17005c, #17005c)' }}
+    >
       <Header />
       <div className="form" style={{ marginTop: '10%' }}>
         <h1 style={{ marginBottom: '5px' }}>Create Poll</h1>
