@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import './MyPolls.css';
 import Header from '../../components/Header/Header.jsx';
 // import { CircularProgress } from '@mui/material';
@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Modal from '@mui/material/Modal';
 
 function Home() {
+  const id = useId();
   // eslint-disable-next-line
   const [signupFirstErr, setSignupFirstErr] = useState(false);
   // eslint-disable-next-line
@@ -501,7 +502,7 @@ function Home() {
         {polls && !isLoading
           ? polls.map((poll) => {
               return (
-                <div className="pollc" style={{ height: '280px' }}>
+                <div className="pollc" style={{ height: '280px' }} key={id}>
                   <div className="hC">
                     <h1>{poll.question}</h1>
                   </div>
@@ -540,26 +541,25 @@ function Home() {
                     <button
                       className="Btn"
                       style={{ marginLeft: '57%' }}
-                      aria-controls={open ? 'basic-menu' : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? 'true' : undefined}
+                      // aria-controls={open ? 'basic-menu' : undefined}
+                      // aria-haspopup="true"
+                      // aria-expanded={open ? 'true' : undefined}
                       onClick={handleClick}
                     >
-                      Share Poll
+                      Share Poll 🔗
                     </button>
                     <Menuu
                       id="basic-menu"
-                      anchorEl={anchorEl}
+                      // anchorEl={anchorEl}
                       open={open}
                       onClose={handleClose}
                       MenuListProps={{
                         'aria-labelledby': 'basic-button',
                       }}
                     >
-                      {/* <MenuItem onClick={handleClose}> */}
                       <RWebShare
                         data={{
-                          text: `VoteAble - ${poll.question}`,
+                          text: `VoteAble | ${poll.question}`,
                           url: `https://voteable-app.onrender.com/poll/${poll._id}`,
                           title: `VoteAble Poll - ${poll.question}`,
                         }}
@@ -594,7 +594,7 @@ function Home() {
                   >
                     <div className="pollc">
                       <QRCode
-                        value={`https://voteable-app.onrender.com/${poll._id}`}
+                        value={`https://voteable-app.onrender.com/poll/${poll._id}`}
                         style={{ marginTop: '25px' }}
                       />
                     </div>
