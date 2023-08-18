@@ -140,6 +140,9 @@ function Results() {
             }}
           >
             <h1 style={{ color: 'white' }}>{question}</h1>
+            <p>
+              <i>Refresh to change slice colours</i>
+            </p>
             <div className="dNut">
               {/* <h2>{question}</h2><br /> */}
               {/* <p>Refresh to change doughnut slice colour</p> */}
