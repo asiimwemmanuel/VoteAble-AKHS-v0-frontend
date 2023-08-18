@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../../components/Header/Header.jsx';
-import Img from '../../assets/VoteAble header image 2.png';
+import Img from '../../assets/VoteAble-header-image-2.png';
 import './Subscription.css';
 
 function Subscription() {

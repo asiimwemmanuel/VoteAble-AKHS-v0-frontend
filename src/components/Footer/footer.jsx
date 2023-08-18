@@ -2,6 +2,7 @@ import React from 'react';
 import Svg2 from '../../assets/youtube-icon.png';
 import Svg3 from '../../assets/icons8-mail-48.png';
 import Joshua from '../../assets/Joshua.jpeg';
+import { NavLink } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -77,7 +78,7 @@ function Footer() {
       <div style={footerBottomStyles}>
         You can learn more about our operations at the{' '}
         <a
-          href="https://voteable-app.onrender.com/privacy-policy"
+          href="/privacy-policy"
           style={{
             textDecoration: 'underline',
             color: 'white',

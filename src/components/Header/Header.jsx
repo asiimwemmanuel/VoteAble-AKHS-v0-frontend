@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react';
-import avatarPic from '../../assets/VoteAble header image 2.png';
+import avatarPic from '../../assets/VoteAble-header-image-2.png';
 import './Header.css';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Menu from '@mui/icons-material/Menu';
 import DropDown from '../Drop-down/DropDown.jsx';
 import Context from '../../Context/Context.jsx';
@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import avatarImg from '../../assets/avatarIcon.jpeg';
 import { useNavigate } from 'react-router-dom';
 
-function Header(props) {
+const Header = React.memo(function Header(props) {
   const ctx = useContext(Context);
   const navigate = useNavigate();
   const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -63,13 +63,13 @@ function Header(props) {
             ctx.setIsDropVal(true);
           }}
         />
-        <Link to="/home" style={{ height: '50px' }}>
+        <NavLink to="/home" style={{ height: '50px' }}>
           <img
             src={avatarPic}
             alt="header"
             style={{ objectFit: 'contain', height: '50px' }}
           />
-        </Link>
+        </NavLink>
         {!localStorage.getItem('name') ? (
           <NavLink to="/login" className="popo">
             Login
@@ -142,13 +142,13 @@ function Header(props) {
         ) : (
           ''
         )}
-        {localStorage.getItem('name') ? (
+        {/* {localStorage.getItem('name') ? (
           <NavLink to="/subscribe" className="btn-n">
             Donate
           </NavLink>
         ) : (
           ''
-        )}
+        )} */}
         {/* <div>
           <FormControl sx={{ m: 1, minWidth: 115 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Subscribe</InputLabel>
@@ -223,6 +223,6 @@ function Header(props) {
       </div>
     </div>
   );
-}
+});
 
 export default Header;

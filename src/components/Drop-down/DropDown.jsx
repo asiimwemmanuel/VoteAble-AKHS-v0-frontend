@@ -142,7 +142,7 @@ function DropDown(props) {
         {/* <form action='https://voteable-backend.onrender.com/v1/create-checkout-session' method="POST">
           <button className="btnn" type="submit">Donate</button>
         </form> */}
-        {localStorage.getItem('name') ? (
+        {/* {localStorage.getItem('name') ? (
           <NavLink to="/subscribe">
             <button
               className="btnn"
@@ -156,7 +156,7 @@ function DropDown(props) {
           </NavLink>
         ) : (
           ''
-        )}
+        )} */}
         {/* {Cookies.get('jwt') ?
           <div>
             <button className="btnn" style={{ fontSize: '16.5px' }} aria-controls={open ? 'basic-menu' : undefined}

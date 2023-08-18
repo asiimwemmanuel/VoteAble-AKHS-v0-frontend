@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header.jsx';
 import Svg from '../../assets/undraw_election_day_w842.svg';
 import Svg2 from '../../assets/undraw_voting_nvu7.svg';
 import Svg3 from '../../assets/undraw_growth_analytics_re_pyxf.svg';
-import logo from '../../assets/VoteAble header image 2.png';
+import logo from '../../assets/VoteAble-header-image-2.png';
 // import anime from 'animejs/lib/anime.es.js';
 import CookieConsent from 'react-cookie-consent';
 import './Home.css';
