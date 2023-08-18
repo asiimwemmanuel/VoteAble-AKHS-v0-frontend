@@ -12,11 +12,20 @@ function CreatePoll() {
   const [question, setQuestion] = useState('');
   const [formClosed, setFormClosed] = useState(false);
   const [option, setOption] = useState('');
-  const [house, setHouse] = useState('');
-  const [classValue, setClassValue] = useState('');
   const [fileErr, setFileErr] = useState(null);
   const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
+  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedHouse, setSelectedHouse] = useState('');
+  const handleClassChange = (event) => {
+    setSelectedClass(event.target.value);
+
+    if (selectedClass) setOptionErr('');
+  };
+  const handleHouseChange = (event) => {
+    setSelectedHouse(event.target.value);
+    if (selectedHouse) setOptionErr('');
+  };
   const inputRef = useRef();
 
   const navigate = useNavigate();
@@ -46,14 +55,6 @@ function CreatePoll() {
     }
   };
 
-  const handleHouseChange = (e) => {
-    setHouse(e.target.value);
-  };
-
-  const handleClassChange = (e) => {
-    setClassValue(e.target.value);
-  };
-
   const handleUseQuestion = (e) => {
     e.preventDefault();
     if (question) {
@@ -69,6 +70,9 @@ function CreatePoll() {
       setOptionErr('Enter an option');
       return;
     }
+
+    if (!selectedClass) setOptionErr('Please select a class');
+    if (!selectedHouse) setOptionErr('Please select a house');
 
     const updatedOptions = [...options];
     updatedOptions.push({ option, image });
@@ -113,8 +117,8 @@ function CreatePoll() {
               password: localStorage.getItem('password'),
               gender: localStorage.getItem('gender'),
             },
-            house: house, // Include House value
-            Class: classValue, // Include Class value
+            class: selectedClass,
+            house: selectedHouse,
           }),
         }
       );
@@ -124,6 +128,7 @@ function CreatePoll() {
       }
 
       const data = res.data;
+
       if (data.error === 'You have to login / signup to create a poll') {
         setOptionErr('You have to login to create a poll');
       }
@@ -208,64 +213,61 @@ function CreatePoll() {
                 />
               </Form.Group>
             </div>
-            <div>
-              <select
-                // className="qInput"
-                value={house}
-                onChange={handleHouseChange}
-                required
-                id="classDropdown"
-                // value={selectedClass}
-                // onChange={handleClassChange}
-                className="joinInput mt-10"
-                style={{
-                  padding: '8px',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  fontSize: '16px',
-                  width: '100%',
-                }}
-              >
-                <option value="">Select House</option>
-                <option value="N/A">N/A</option>
-                <option value="hawks">Hawks</option>
-                <option value="falcons">Falcons</option>
-                <option value="kites">Kites</option>
-                <option value="eagles">Eagles</option>
-              </select>
-            </div>
-            <div>
-              <select
-                // className="qInput"
-                value={classValue}
-                onChange={handleClassChange}
-                required
-                id="classDropdown"
-                className="joinInput mt-10"
-                style={{
-                  padding: '8px',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  fontSize: '16px',
-                  width: '100%',
-                }}
-              >
-                <option value="">Select Class</option>
-                <option value="N/A">N/A</option>
-                <option value="Y7">Y7</option>
-                <option value="Y8">Y8</option>
-                <option value="Y9">Y9</option>
-                <option value="Y10">Y10</option>
-                <option value="Y11">Y11</option>
-                <option value="IB1">IB1</option>
-                <option value="IB2">IB2</option>
-              </select>
-            </div>
             {optionErr && <p className="passp">{optionErr}</p>}
             {fileErr && <p className="passp">{fileErr}</p>}
             <button className="button mt-20">Add option</button>
+
+            <select
+              id="classDropdown"
+              value={selectedClass}
+              onChange={handleClassChange}
+              className="joinInput mt-10"
+              style={{
+                padding: '8px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                fontSize: '16px',
+                width: '100%',
+              }}
+            >
+              <option value="">Select a class</option>
+              <option value="Y7">Y7</option>
+              <option value="Y8">Y8</option>
+              <option value="Y9">Y9</option>
+              <option value="Y10">Y10</option>
+              <option value="Y11">Y11</option>
+              <option value="IB1">IB1</option>
+              <option value="IB2">IB2</option>
+            </select>
+            <select
+              id="houseDropdown"
+              value={selectedHouse}
+              onChange={handleHouseChange}
+              className="joinInput"
+              style={{
+                padding: '8px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                fontSize: '16px',
+                width: '100%',
+              }}
+            >
+              <option value="">Select a house</option>
+              <option value="Hawks">Hawks</option>
+              <option value="Falcons">Falcons</option>
+              <option value="Eagles">Eagles</option>
+              <option value="Kites">Kites</option>
+            </select>
           </form>
         ) : null}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: '15px',
+          }}
+        ></div>
         <button
           className="button mt-20"
           onClick={() => {
