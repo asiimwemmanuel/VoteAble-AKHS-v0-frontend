@@ -3,11 +3,7 @@ import './MyPolls.css';
 import Header from '../../components/Header/Header.jsx';
 // import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
-import QRCode from 'react-qr-code';
-import { RWebShare } from 'react-web-share';
-import Menuu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Modal from '@mui/material/Modal';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function Home() {
   const id = useId();
@@ -538,67 +534,14 @@ function Home() {
                   Delete Poll
                 </button> */}
                   <div>
-                    <button
+                    <CopyToClipboard
                       className="Btn"
                       style={{ marginLeft: '57%' }}
-                      // aria-controls={open ? 'basic-menu' : undefined}
-                      // aria-haspopup="true"
-                      // aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}
+                      text={`https://voteable-app.onrender.com/poll/${poll._id}`}
                     >
-                      Share Poll 🔗
-                    </button>
-                    <Menuu
-                      id="basic-menu"
-                      // anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                      }}
-                    >
-                      <RWebShare
-                        data={{
-                          text: `VoteAble | ${poll.question}`,
-                          url: `https://voteable-app.onrender.com/poll/${poll._id}`,
-                          title: `VoteAble Poll - ${poll.question}`,
-                        }}
-                        onClick={() => console.log('shared successfully!')}
-                      >
-                        <MenuItem
-                          onClick={() => {
-                            handleOpenModal();
-                            handleClose();
-                          }}
-                        >
-                          Share
-                        </MenuItem>
-                      </RWebShare>
-                      {/* </MenuItem> */}
-                      <MenuItem
-                        onClick={() => {
-                          handleOpenModal();
-                          handleClose();
-                        }}
-                      >
-                        Scan QR code
-                      </MenuItem>
-                    </Menuu>
+                      Copy Link 🔗
+                    </CopyToClipboard>
                   </div>
-                  <Modal
-                    open={openModal}
-                    onClose={handleCloseModal}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                    style={{ marginTop: '50px', marginLeft: '1%' }}
-                  >
-                    <div className="pollc">
-                      <QRCode
-                        value={`https://voteable-app.onrender.com/poll/${poll._id}`}
-                        style={{ marginTop: '25px' }}
-                      />
-                    </div>
-                  </Modal>
                 </div>
               );
             })
