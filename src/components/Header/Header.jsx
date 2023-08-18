@@ -1,15 +1,23 @@
-import React, { useState, useContext, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useContext,
+  useCallback,
+  useEffect,
+  lazy,
+  Suspense,
+} from 'react';
 import avatarPic from '../../assets/VoteAble-header-image-2.png';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import Menu from '@mui/icons-material/Menu';
 import DropDown from '../Drop-down/DropDown.jsx';
 import Context from '../../Context/Context.jsx';
-// import Cookies from 'js-cookie';
 import Menuu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import avatarImg from '../../assets/avatarIcon.jpeg';
 import { useNavigate } from 'react-router-dom';
+
+const LazyDropDown = lazy(() => import('../Drop-down/DropDown.jsx'));
 
 const Header = React.memo(function Header(props) {
   const ctx = useContext(Context);
@@ -54,7 +62,9 @@ const Header = React.memo(function Header(props) {
 
   return (
     <div>
-      {ctx.isDrop ? <DropDown message={props.message} /> : ''}
+      <Suspense fallback={<div>Loading...</div>}>
+        {ctx.isDrop ? <LazyDropDown message={props.message} /> : ''}
+      </Suspense>
       <div className="navBar">
         <Menu
           className="Menu"
