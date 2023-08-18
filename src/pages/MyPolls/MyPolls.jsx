@@ -11,7 +11,7 @@ import Modal from '@mui/material/Modal';
 import CopyBoard from 'react-copy-to-clipboard';
 
 function Home() {
-  const [copyText, setCopyText] = useState('Copy Link 🔗');
+  const [copy, setCopy] = useState(true);
   // eslint-disable-next-line
   const [signupFirstErr, setSignupFirstErr] = useState(false);
   // eslint-disable-next-line
@@ -20,9 +20,9 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleCopy = (event) => {
-    setCopyText('Copied Text ✅');
-  };
+  // const handleCopy = (event) => {
+  //   setCopyText('Copied Text ✅');
+  // };
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -540,11 +540,13 @@ function Home() {
                 </button> */}
                   <div>
                     <CopyBoard
-                      onCopy={handleCopy}
+                      onCopy={() => {
+                        setCopy(poll._id);
+                      }}
                       text={`https://voteable-app.onrender.com/poll/${poll._id}`}
                     >
                       <button className="Btn" style={{ marginLeft: '57%' }}>
-                        {copyText}
+                        {copy == poll._id ? 'Copied Link ✅' : 'Copy Link 🔗'}
                       </button>
                     </CopyBoard>
                   </div>
