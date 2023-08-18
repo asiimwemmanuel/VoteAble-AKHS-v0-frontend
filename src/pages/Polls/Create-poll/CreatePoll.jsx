@@ -12,6 +12,8 @@ function CreatePoll() {
   const [question, setQuestion] = useState('');
   const [formClosed, setFormClosed] = useState(false);
   const [option, setOption] = useState('');
+  const [house, setHouse] = useState('');
+  const [classValue, setClassValue] = useState('');
   const [fileErr, setFileErr] = useState(null);
   const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
@@ -42,6 +44,14 @@ function CreatePoll() {
       setImage(null);
       setFileErr('Please upload an image!');
     }
+  };
+
+  const handleHouseChange = (e) => {
+    setHouse(e.target.value);
+  };
+
+  const handleClassChange = (e) => {
+    setClassValue(e.target.value);
   };
 
   const handleUseQuestion = (e) => {
@@ -103,6 +113,8 @@ function CreatePoll() {
               password: localStorage.getItem('password'),
               gender: localStorage.getItem('gender'),
             },
+            house: house, // Include House value
+            Class: classValue, // Include Class value
           }),
         }
       );
@@ -195,6 +207,59 @@ function CreatePoll() {
                   name="my-file"
                 />
               </Form.Group>
+            </div>
+            <div>
+              <select
+                // className="qInput"
+                value={house}
+                onChange={handleHouseChange}
+                required
+                id="classDropdown"
+                // value={selectedClass}
+                // onChange={handleClassChange}
+                className="joinInput mt-10"
+                style={{
+                  padding: '8px',
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  fontSize: '16px',
+                  width: '100%',
+                }}
+              >
+                <option value="">Select House</option>
+                <option value="N/A">N/A</option>
+                <option value="hawks">Hawks</option>
+                <option value="falcons">Falcons</option>
+                <option value="kites">Kites</option>
+                <option value="eagles">Eagles</option>
+              </select>
+            </div>
+            <div>
+              <select
+                // className="qInput"
+                value={classValue}
+                onChange={handleClassChange}
+                required
+                id="classDropdown"
+                className="joinInput mt-10"
+                style={{
+                  padding: '8px',
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  fontSize: '16px',
+                  width: '100%',
+                }}
+              >
+                <option value="">Select Class</option>
+                <option value="N/A">N/A</option>
+                <option value="Y7">Y7</option>
+                <option value="Y8">Y8</option>
+                <option value="Y9">Y9</option>
+                <option value="Y10">Y10</option>
+                <option value="Y11">Y11</option>
+                <option value="IB1">IB1</option>
+                <option value="IB2">IB2</option>
+              </select>
             </div>
             {optionErr && <p className="passp">{optionErr}</p>}
             {fileErr && <p className="passp">{fileErr}</p>}
