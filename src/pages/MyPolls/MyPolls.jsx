@@ -564,4 +564,4 @@ function MyPolls() {
   );
 }
 
-export default Home;
+export default MyPolls;
