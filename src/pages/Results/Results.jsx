@@ -140,7 +140,7 @@ function Results() {
             }}
           >
             <h1 style={{ color: 'white' }}>{question}</h1>
-            <p>
+            <p style={{ color: 'white' }}>
               <i>Refresh to change slice colours</i>
             </p>
             <div className="dNut">

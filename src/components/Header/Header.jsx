@@ -142,13 +142,7 @@ const Header = React.memo(function Header(props) {
         ) : (
           ''
         )}
-        {/* {localStorage.getItem('name') ? (
-          <NavLink to="/subscribe" className="btn-n">
-            Donate
-          </NavLink>
-        ) : (
-          ''
-        )} */}
+
         {/* <div>
           <FormControl sx={{ m: 1, minWidth: 115 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Subscribe</InputLabel>
