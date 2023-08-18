@@ -18,9 +18,8 @@ function CreatePoll() {
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedHouse, setSelectedHouse] = useState('');
   const handleClassChange = (event) => {
-    setSelectedClass(event.target.value);
-
     if (selectedClass) setOptionErr('');
+    setSelectedClass(event.target.value);
   };
   const handleHouseChange = (event) => {
     setSelectedHouse(event.target.value);
@@ -70,9 +69,6 @@ function CreatePoll() {
       setOptionErr('Enter an option');
       return;
     }
-
-    if (!selectedClass) setOptionErr('Please select a class');
-    if (!selectedHouse) setOptionErr('Please select a house');
 
     const updatedOptions = [...options];
     updatedOptions.push({ option, image });
@@ -231,6 +227,7 @@ function CreatePoll() {
               }}
             >
               <option value="">Select a class</option>
+              <option value="N/A">N/A</option>
               <option value="Y7">Y7</option>
               <option value="Y8">Y8</option>
               <option value="Y9">Y9</option>
@@ -253,6 +250,7 @@ function CreatePoll() {
               }}
             >
               <option value="">Select a house</option>
+              <option value="N/A">N/A</option>
               <option value="Hawks">Hawks</option>
               <option value="Falcons">Falcons</option>
               <option value="Eagles">Eagles</option>
@@ -281,6 +279,9 @@ function CreatePoll() {
             if (options.length < 2) {
               setOptionErr('You need to add more than 1 option');
             }
+
+            if (!selectedClass) setOptionErr('Please select a class');
+            if (!selectedHouse) setOptionErr('Please select a house');
 
             createPoll();
           }}
