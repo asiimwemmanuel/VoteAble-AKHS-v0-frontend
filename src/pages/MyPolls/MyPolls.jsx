@@ -540,14 +540,12 @@ function Home() {
                 </button> */}
                   <div>
                     <CopyBoard
-                      className="Btn"
-                      style={{ marginLeft: '57%' }}
-                      // aria-controls={open ? 'basic-menu' : undefined}
-                      // aria-haspopup="true"
-                      // aria-expanded={open ? 'true' : undefined}
                       onCopy={handleCopy}
+                      text={`https://voteable-app.onrender.com/poll/${poll._id}`}
                     >
-                      Share Poll
+                      <button className="Btn" style={{ marginLeft: '57%' }}>
+                        {copyText}
+                      </button>
                     </CopyBoard>
                   </div>
                 </div>
