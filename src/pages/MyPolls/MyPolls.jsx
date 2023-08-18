@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useId } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyPolls.css';
 import Header from '../../components/Header/Header.jsx';
 // import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import QRCode from 'react-qr-code';
+import { RWebShare } from 'react-web-share';
+import Menuu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Modal from '@mui/material/Modal';
 
-function MyPolls() {
-  const id = useId();
-  const [copyText, setCopyText] = useState('');
+function Home() {
   // eslint-disable-next-line
-  const [signupFirstErr, setSignupFirstErr] = useState('Copy Link 🔗');
+  const [signupFirstErr, setSignupFirstErr] = useState(false);
   // eslint-disable-next-line
   const [noPollsFound, setNoPollsFound] = useState();
   const [polls, setPolls] = useState();
@@ -499,7 +501,7 @@ function MyPolls() {
         {polls && !isLoading
           ? polls.map((poll) => {
               return (
-                <div className="pollc" style={{ height: '280px' }} key={id}>
+                <div className="pollc" style={{ height: '280px' }}>
                   <div className="hC">
                     <h1>{poll.question}</h1>
                   </div>
@@ -535,17 +537,68 @@ function MyPolls() {
                   Delete Poll
                 </button> */}
                   <div>
-                    <CopyToClipboard
+                    <button
                       className="Btn"
                       style={{ marginLeft: '57%' }}
-                      text={`https://voteable-app.onrender.com/poll/${poll._id}`}
-                      onCopy={() => {
-                        setCopyText('Copied Text ✅');
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    >
+                      Share Poll
+                    </button>
+                    <Menuu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        'aria-labelledby': 'basic-button',
                       }}
                     >
-                      {copyText}
-                    </CopyToClipboard>
+                      {/* <MenuItem onClick={handleClose}> */}
+                      <RWebShare
+                        data={{
+                          text: `VoteAble - ${poll.question}`,
+                          url: `https://voteable-app.onrender.com/poll/${poll._id}`,
+                          title: `VoteAble Poll - ${poll.question}`,
+                        }}
+                        onClick={() => console.log('shared successfully!')}
+                      >
+                        <MenuItem
+                          onClick={() => {
+                            handleOpenModal();
+                            handleClose();
+                          }}
+                        >
+                          Share
+                        </MenuItem>
+                      </RWebShare>
+                      {/* </MenuItem> */}
+                      <MenuItem
+                        onClick={() => {
+                          handleOpenModal();
+                          handleClose();
+                        }}
+                      >
+                        Scan QR code
+                      </MenuItem>
+                    </Menuu>
                   </div>
+                  <Modal
+                    open={openModal}
+                    onClose={handleCloseModal}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    style={{ marginTop: '50px', marginLeft: '1%' }}
+                  >
+                    <div className="pollc">
+                      <QRCode
+                        value={`https://voteable-app.onrender.com/${poll._id}`}
+                        style={{ marginTop: '25px' }}
+                      />
+                    </div>
+                  </Modal>
                 </div>
               );
             })
@@ -565,4 +618,4 @@ function MyPolls() {
   );
 }
 
-export default MyPolls;
+export default Home;
