@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function MyPolls() {
+  const id = useId();
   const [copyText, setCopyText] = useState('');
   // eslint-disable-next-line
   const [signupFirstErr, setSignupFirstErr] = useState('Copy Link 🔗');
