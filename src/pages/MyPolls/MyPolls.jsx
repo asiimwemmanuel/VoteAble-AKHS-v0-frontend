@@ -543,7 +543,7 @@ function Home() {
                       onCopy={() => {
                         setCopy(poll._id);
                       }}
-                      text={`https://voteable-app.onrender.com/poll/${poll._id}`}
+                      text={` VoteAble | ${poll.question} \n \n https://voteable-app.onrender.com/poll/${poll._id}`}
                     >
                       <button className="Btn" style={{ marginLeft: '57%' }}>
                         {copy == poll._id ? 'Copied Link ✅' : 'Copy Link 🔗'}
