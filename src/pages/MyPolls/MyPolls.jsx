@@ -7,8 +7,9 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function Home() {
   const id = useId();
+  const [copyText, setCopyText] = useState('');
   // eslint-disable-next-line
-  const [signupFirstErr, setSignupFirstErr] = useState(false);
+  const [signupFirstErr, setSignupFirstErr] = useState('Copy Link 🔗');
   // eslint-disable-next-line
   const [noPollsFound, setNoPollsFound] = useState();
   const [polls, setPolls] = useState();
@@ -538,8 +539,11 @@ function Home() {
                       className="Btn"
                       style={{ marginLeft: '57%' }}
                       text={`https://voteable-app.onrender.com/poll/${poll._id}`}
+                      onCopy={() => {
+                        setCopyText('Copied Text ✅');
+                      }}
                     >
-                      Copy Link 🔗
+                      {copyText}
                     </CopyToClipboard>
                   </div>
                 </div>
