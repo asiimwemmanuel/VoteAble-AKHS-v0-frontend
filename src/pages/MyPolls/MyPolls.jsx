@@ -34,23 +34,28 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    body = JSON.stringify({
+      class: localStorage.getItem('class')
+        ? localStorage.getItem('class')
+        : null,
+      house: localStorage.getItem('house')
+        ? localStorage.getItem('house')
+        : null,
+    });
+
+    console.log(body);
+
     const myPolls = async () => {
       setIsLoading(true);
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
         {
           method: 'POST',
-          body: JSON.stringify({
-            class: localStorage.getItem('class')
-              ? localStorage.getItem('class').trim().toLowerCase()
-              : null,
-            house: localStorage.getItem('house')
-              ? localStorage.getItem('house').trim().toLowerCase()
-              : null,
-          }),
+          body,
         }
       );
       const data = await res.json();
+      console.log(data);
       if (res.ok) {
         setIsLoading(false);
         setPolls(data.data);
@@ -91,13 +96,13 @@ function Home() {
             <h1>Login First to access polls</h1>
           </div>
         )}
-        {error ? (
+        {/* {error.trim() == '' ? (
           <div className="pollc">
             <h1>Login First to access polls</h1>
           </div>
         ) : (
           ''
-        )}
+        )} */}
         {isLoading && !signupFirstErr ? (
           <div
             style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
