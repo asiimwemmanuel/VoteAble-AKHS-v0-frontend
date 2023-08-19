@@ -36,17 +36,19 @@ function Home() {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 
     const myPolls = async () => {
-      console.log(
-        JSON.stringify({
-          class: localStorage.getItem('class'),
-          house: localStorage.getItem('house'),
-        })
-      );
+      console.log({
+        class: localStorage.getItem('class'),
+        house: localStorage.getItem('house'),
+      });
       setIsLoading(true);
+
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
         {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             class: localStorage.getItem('class'),
             house: localStorage.getItem('house'),
