@@ -34,15 +34,6 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    body = JSON.stringify({
-      class: localStorage.getItem('class')
-        ? localStorage.getItem('class')
-        : null,
-      house: localStorage.getItem('house')
-        ? localStorage.getItem('house')
-        : null,
-    });
-
     console.log(body);
 
     const myPolls = async () => {
@@ -51,7 +42,14 @@ function Home() {
         'https://voteable-backend.onrender.com/v1/myPolls',
         {
           method: 'POST',
-          body,
+          body: JSON.stringify({
+            class: localStorage.getItem('class')
+              ? localStorage.getItem('class')
+              : null,
+            house: localStorage.getItem('house')
+              ? localStorage.getItem('house')
+              : null,
+          }),
         }
       );
       const data = await res.json();
