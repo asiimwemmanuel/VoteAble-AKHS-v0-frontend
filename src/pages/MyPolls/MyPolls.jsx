@@ -16,6 +16,7 @@ function Home() {
   const [signupFirstErr, setSignupFirstErr] = useState(false);
   // eslint-disable-next-line
   const [noPollsFound, setNoPollsFound] = useState();
+  const [error, setError] = useState('');
   const [polls, setPolls] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -38,7 +39,15 @@ function Home() {
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
         {
-          method: 'GET',
+          method: 'POST',
+          body: JSON.stringify({
+            class: localStorage.getItem('class')
+              ? localStorage.getItem('class').trim().toLowerCase()
+              : null,
+            house: localStorage.getItem('house')
+              ? localStorage.getItem('house').trim().toLowerCase()
+              : null,
+          }),
         }
       );
       const data = await res.json();
@@ -54,6 +63,12 @@ function Home() {
 
       if (data.error === 'No polls found') {
         setNoPollsFound(true);
+      }
+      if (data.error === 'Please enter a house') {
+        setError('Please enter a house');
+      }
+      if (data.error === 'Please enter a class') {
+        setError('Please enter a class');
       }
     };
     if (localStorage.getItem('name')) {
@@ -75,6 +90,13 @@ function Home() {
           <div className="pollc">
             <h1>Login First to access polls</h1>
           </div>
+        )}
+        {error ? (
+          <div className="pollc">
+            <h1>Login First to access polls</h1>
+          </div>
+        ) : (
+          ''
         )}
         {isLoading && !signupFirstErr ? (
           <div
