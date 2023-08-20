@@ -18,8 +18,8 @@ function CreatePoll() {
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedHouse, setSelectedHouse] = useState('');
   const handleClassChange = (event) => {
-    if (selectedClass) setOptionErr('');
     setSelectedClass(event.target.value);
+    if (selectedClass) setOptionErr('');
   };
   const handleHouseChange = (event) => {
     setSelectedHouse(event.target.value);
