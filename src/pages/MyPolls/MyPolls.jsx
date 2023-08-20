@@ -55,17 +55,16 @@ function Home() {
           }),
         }
       );
+
       const data = await res.json();
+      setIsLoading(false);
+
       console.log(data);
+
       if (res.ok) {
-        setIsLoading(false);
         setPolls(data.data);
         console.log(polls);
       }
-      if (!res.ok) {
-        setIsLoading(false);
-      }
-      console.log(data);
 
       if (data.error === 'No polls found') {
         setNoPollsFound(true);
@@ -104,7 +103,7 @@ function Home() {
         ) : (
           ''
         )} */}
-        {isLoading && !signupFirstErr ? (
+        {isLoading ? (
           <div
             style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
           >
