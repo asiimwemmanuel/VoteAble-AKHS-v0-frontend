@@ -96,7 +96,7 @@ function DropDown(props) {
         )}
         {localStorage.getItem('name') ? (
           <div>
-            <button
+            {/* <button
               className="btnn"
               style={{ fontSize: '16.5px' }}
               aria-controls={bopen ? 'basic-menu' : undefined}
@@ -105,24 +105,16 @@ function DropDown(props) {
               onClick={bhandleClick}
             >
               Poll Hub
-            </button>
-            <Menuu
-              id="basic-menu"
-              anchorEl={banchorEl}
-              open={bopen}
-              onClose={bhandleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
+            </button> */}
               <NavLink
-                to="/polls"
+              to="/polls"
+              className='btnn'
                 style={{ textDecoration: 'none', color: 'black' }}
                 onClick={() => {
                   ctx.setIsDropVal(false);
                 }}
-              >
-                <MenuItem>Polls</MenuItem>
+            >
+              Poll Hub
               </NavLink>
               {/* <NavLink
                 to="/my-poll-chains"
@@ -133,7 +125,7 @@ function DropDown(props) {
               >
                 <MenuItem>Poll Chains</MenuItem>
               </NavLink> */}
-            </Menuu>
+            
           </div>
         ) : (
           ''
