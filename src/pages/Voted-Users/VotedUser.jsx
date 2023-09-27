@@ -77,7 +77,7 @@ function VotedUser() {
           <h1>Voted Users</h1>
           <h3>{err}</h3>
           {isData.length !== 0 ? (
-            <ul className="ulvuc">
+            <ol type='1' className="ulvuc">
               {isData.map((option) => {
                 return (
                   <li key={id} style={{ margin: '15px' }}>
@@ -85,7 +85,7 @@ function VotedUser() {
                   </li>
                 );
               })}
-            </ul>
+            </ol>
           ) : (
             <h4>No users have voted yet</h4>
           )}

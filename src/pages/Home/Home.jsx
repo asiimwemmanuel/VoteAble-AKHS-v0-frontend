@@ -72,7 +72,7 @@ function Home() {
         <br />
         Introducing VoteAble, the online voting platform engineered by AI, Deep
         Learning & Software developer and enthusiast, <b>Joshua Mukisa</b>. I'm
-        currently a student of Aga Khan Highschool in IBDP1. Presenting the
+        currently a student of Aga Khan Highschool in IB1. Presenting the
         future of voting to the hands of the students.{' '}
       </p>
       <div className="hc">
@@ -180,7 +180,7 @@ function Home() {
           className="featureDescription"
           style={{ maxWidth: '700px', marginRight: '10px', marginLeft: '10px' }}
         >
-          <h1>No More Voting in Labs</h1>
+          <h1>No More Voting in Labs (Y10-IB2)</h1>
           <p>
             Unlock the Full Potential of Voting with VoteAble! Seamlessly
             navigate through a user-friendly interface. Enjoy a spectrum of
