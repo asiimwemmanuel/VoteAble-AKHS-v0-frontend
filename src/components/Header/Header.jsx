@@ -87,7 +87,7 @@ const Header = React.memo(function Header(props) {
            <NavLink
               to="/polls"
               className='popo'
-                style={{ textDecoration: 'none', color: 'black', textAlign:'center' }}
+                // style={{ textDecoration: 'none', color: 'black', textAlign:'center' }}
                 onClick={() => {
                   ctx.setIsDropVal(false);
                 }}
