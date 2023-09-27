@@ -84,32 +84,16 @@ const Header = React.memo(function Header(props) {
         )}
         {localStorage.getItem('name') ? (
           <div>
-            <button
-              className="btn-n"
-              style={{ fontSize: '16.5px' }}
-              aria-controls={bopen ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={bopen ? 'true' : undefined}
-              onClick={bhandleClick}
+           <NavLink
+              to="/polls"
+              className='btnn'
+                style={{ textDecoration: 'none', color: 'black', textAlign:'center' }}
+                onClick={() => {
+                  ctx.setIsDropVal(false);
+                }}
             >
               Poll Hub
-            </button>
-            <Menuu
-              id="basic-menu"
-              anchorEl={banchorEl}
-              open={bopen}
-              onClose={bhandleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <NavLink
-                to="/polls"
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                <MenuItem>Polls</MenuItem>
               </NavLink>
-            </Menuu>
           </div>
         ) : (
           ''

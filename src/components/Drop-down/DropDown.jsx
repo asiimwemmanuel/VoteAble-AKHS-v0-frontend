@@ -109,7 +109,7 @@ function DropDown(props) {
               <NavLink
               to="/polls"
               className='btnn'
-                style={{ textDecoration: 'none', color: 'black' }}
+                style={{ textDecoration: 'none', color: 'black', textAlign:'center' }}
                 onClick={() => {
                   ctx.setIsDropVal(false);
                 }}
