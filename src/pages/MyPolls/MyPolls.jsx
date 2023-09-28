@@ -540,12 +540,9 @@ function Home() {
                   >
                     <button className="Btn">View Poll</button>
                   </Link>
-                  {/* <Link
-                  to={`/voted-users/${ poll._id }`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <button className="Btn2">Voted Users</button>
-                </Link> */}
+               
+                  {poll.voted.includes(localStorage.getItem('name')) ?
+                   <button style={{color:"#bababa"}}>View Poll</button>:''}
                   {/* <button
                   className="dBtn"
                   onClick={async () => {
