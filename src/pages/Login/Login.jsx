@@ -70,7 +70,7 @@ export default function Login() {
             name="name"
             style={{ fontSize: '17px' }}
             value={name}
-            placeholder="Your full name"
+            placeholder="Student ID"
             className="joinInput"
             type="text"
             onChange={(event) => {
