@@ -46,42 +46,14 @@ export default function Login() {
       return;
     }
 
-     const userDetailsVerification = async (url) => {
-      const res = await fetch(
-url,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Student_ID: localStorage.getItem('Student_ID'),
-            password:localStorage.getItem('password')
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      console.log(data);
-
-      if (res.ok) {
-        localStorage.setItem('Student_ID', name);
-        localStorage.setItem('name', data.student.name)
+    localStorage.setItem('Student_ID', name);
+    localStorage.setItem('name', "Joshua Mukisa");
     localStorage.setItem('password', password);
     localStorage.setItem('gender', selectedGender);
     localStorage.setItem('class', selectedClass);
-        localStorage.setItem('house', selectedHouse);
-        navigate('/polls');
-      }
+    localStorage.setItem('house', selectedHouse);
 
-      if (data.error) {
-        setError(data.error);
-      }
-
-    };
-
-    userDetailsVerification('https://voteable-backend.onrender.com/v1/myPolls')
+    navigate('/polls');
   };
 
   useEffect(() => {
