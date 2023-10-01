@@ -8,9 +8,9 @@ import './Login.css';
 
 export default function Login() {
   // const ctx = useContext(Context);
-  const [id, setID] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [idErr, setIDErr] = useState('');
+  const [nameErr, setNameErr] = useState('');
   const [passErr, setPassErr] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
   const [selectedClass, setSelectedClass] = useState('');
@@ -32,13 +32,13 @@ export default function Login() {
 
   const login = () => {
     if (
-      !id ||
+      !name ||
       !password ||
       !selectedGender ||
       !selectedClass ||
       !selectedHouse
     ) {
-      if (!id) setIDErr('Please enter a valid id');
+      if (!name) setNameErr('Please enter a valid Student ID');
       if (!password) setPassErr('Please enter a valid password');
       if (!selectedGender) setPassErr('Please enter a gender');
       if (!selectedClass) setPassErr('Please select a class');
@@ -46,7 +46,7 @@ export default function Login() {
       return;
     }
 
-     async function checkID(id){
+     const userDetailsVerification = async () => {
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
         {
@@ -59,28 +59,26 @@ export default function Login() {
             password:localStorage.getItem('password')
           }),
         }
-       );
-       const data = res.json()
+      );
 
-       if (res.ok) {
-         localStorage.setItem('Student_ID', id);
-         localStorage.setItem('password', password);
-         localStorage.setItem('gender', selectedGender);
-         localStorage.setItem('class', selectedClass);
-         localStorage.setItem('house', selectedHouse);
-         navigate('/polls');
-       }
+      const data = await res.json();
 
-       if (data.error == "Student account does not exist") {
-        setIDErr("Wrong Student ID")
-       }
-       
-       if (data.error == "Invalid Student password") {
-         setPassErr("Invalid Student password")
-       }
-     }
+      console.log(data);
 
-    checkID(id)
+      if (res.ok) {
+        localStorage.setItem('Student_ID', name);
+    localStorage.setItem('password', password);
+    localStorage.setItem('gender', selectedGender);
+    localStorage.setItem('class', selectedClass);
+        localStorage.setItem('house', selectedHouse);
+        navigate('/polls');
+      }
+
+      if (data.error) {
+        setError(data.error);
+      }
+
+    };
   };
 
   useEffect(() => {
@@ -95,26 +93,26 @@ export default function Login() {
         <h1 className="heading">Login</h1>
         <div>
           <input
-            id="id"
+            name="name"
             style={{ fontSize: '17px' }}
-            value={id}
+            value={name}
             placeholder="Student ID"
             className="joinInput"
             type="text"
             onChange={(event) => {
-              setID(event.target.value);
-              setIDErr('');
+              setName(event.target.value);
+              setNameErr('');
             }}
             onBlur={() => {
-              if (!id) setIDErr('Please enter a valid id');
+              if (!name) setNameErr('Please enter a valid name');
             }}
           />
-          {idErr && <p className="idp">{idErr}</p>}
+          {nameErr && <p className="namep">{nameErr}</p>}
         </div>
         <div>
           <input
             style={{ fontSize: '17px' }}
-            id="password"
+            name="password"
             placeholder="Password"
             value={password}
             className="joinInput mt-20"
