@@ -10,7 +10,7 @@ export default function Login() {
   // const ctx = useContext(Context);
   const [id, setID] = useState('');
   const [password, setPassword] = useState('');
-  const [idErr, setNameErr] = useState('');
+  const [idErr, setIDErr] = useState('');
   const [passErr, setPassErr] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
   const [selectedClass, setSelectedClass] = useState('');
@@ -38,7 +38,7 @@ export default function Login() {
       !selectedClass ||
       !selectedHouse
     ) {
-      if (!id) setNameErr('Please enter a valid id');
+      if (!id) setIDErr('Please enter a valid id');
       if (!password) setPassErr('Please enter a valid password');
       if (!selectedGender) setPassErr('Please enter a gender');
       if (!selectedClass) setPassErr('Please select a class');
@@ -72,7 +72,7 @@ export default function Login() {
        }
 
        if (data.error == "Student account does not exist") {
-        setNameErr("Wrong Student ID")
+        setIDErr("Wrong Student ID")
        }
        
        if (data.error == "Invalid Student password") {
@@ -102,11 +102,11 @@ export default function Login() {
             className="joinInput"
             type="text"
             onChange={(event) => {
-              setName(event.target.value);
-              setNameErr('');
+              setID(event.target.value);
+              setIDErr('');
             }}
             onBlur={() => {
-              if (!id) setNameErr('Please enter a valid id');
+              if (!id) setIDErr('Please enter a valid id');
             }}
           />
           {idErr && <p className="idp">{idErr}</p>}
