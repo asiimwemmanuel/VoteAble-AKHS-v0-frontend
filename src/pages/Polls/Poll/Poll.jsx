@@ -26,7 +26,7 @@ function Poll(props) {
       setIsLoading(false);
       const data = await res.json();
       if (data.error) {
-        setPollNotFound('Poll not found, ID is incorrect');
+        setPollNotFound(data.error);
       } else {
         setQuestion(data.data.question);
         setOptions(data.data.options);
@@ -44,17 +44,9 @@ function Poll(props) {
         method: 'POST',
         body: JSON.stringify({
           answer: optiontext,
-          user: {
-            name: localStorage.getItem('name')
-              ? localStorage.getItem('name')
-              : null,
-            password: localStorage.getItem('password')
-              ? localStorage.getItem('password')
-              : null,
-            gender: localStorage.getItem('gender')
-              ? localStorage.getItem('gender')
-              : null,
-          },
+          Student_ID: localStorage.getItem('Student_ID'),
+          password: localStorage.getItem('password'),
+          
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -67,19 +59,10 @@ function Poll(props) {
     if (res.ok) {
       setSignupFirstErr('Voted');
     }
-    if (data.error === 'Login First to access polls') {
-      console.log(data);
-      setSignupFirstErr('You have to login first');
-    }
-    if (data.error === 'Already voted') {
-      console.log(data);
-      setSignupFirstErr('Already voted');
+    if (data.error) {
+      setSignupFirstErr(data.error);
     }
 
-    if (data.error === 'Please choose an option') {
-      console.log(data);
-      setSignupFirstErr('Please choose an option');
-    }
   }
   return (
     <div
@@ -113,7 +96,8 @@ function Poll(props) {
             <p className="passp" style={{ marginBottom: '10px' }}>
               {signupFirstErr}
             </p>
-          )}
+            )}
+            
           <div className="options">
             {options
               ? options.map((option) => {
@@ -170,7 +154,7 @@ function Poll(props) {
                 navigate(`/poll/results/${pollId}`);
               }}
             >
-              <p>Results</p>
+              <p>Next poll ➡️</p>
             </button>
           ) : (
             ''

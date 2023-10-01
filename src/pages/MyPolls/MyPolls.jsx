@@ -34,7 +34,6 @@ function Home() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-
     const myPolls = async () => {
       console.log({
         class: localStorage.getItem('class'),
@@ -50,8 +49,8 @@ function Home() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            class: localStorage.getItem('class'),
-            house: localStorage.getItem('house'),
+            Student_ID: localStorage.getItem('Student_ID'),
+            password:localStorage.getItem('password')
           }),
         }
       );
@@ -66,15 +65,10 @@ function Home() {
         console.log(polls);
       }
 
-      if (data.error === 'No polls found') {
-        setNoPollsFound(true);
+      if (data.error === "Student account does not exist") {
+        setError(data.error);
       }
-      if (data.error === 'Please enter a house') {
-        setError('Please enter a house');
-      }
-      if (data.error === 'Please enter a class') {
-        setError('Please enter a class');
-      }
+
     };
     if (localStorage.getItem('name')) {
       setSignupFirstErr(false);
@@ -527,7 +521,7 @@ function Home() {
         ) : (
           ''
         )}
-        {polls && !isLoading
+        {/* {polls && !isLoading
           ? polls.map((poll) => {
               return (
                 <div className="pollc" style={{ height: '280px' }}>
@@ -543,6 +537,78 @@ function Home() {
                
                   {poll.voted.includes(localStorage.getItem('name')) ?
                    <button style={{color:"#bababa"}} className='Btn'>View Poll</button>:''}
+                 
+                  <div>
+                    <CopyBoard
+                      onCopy={() => {
+                        setCopy(poll._id);
+                      }}
+                      text={` VoteAble | ${poll.question} \n \n https://voteable-app.onrender.com/poll/${poll._id}`}
+                    >
+                      <button className="Btn" style={{ marginLeft: '57%' }}>
+                        {copy == poll._id ? 'Copied Link ✅' : 'Copy Link 🔗'}
+                      </button>
+                    </CopyBoard>
+                  </div>
+                </div>
+              );
+            })
+          : ''}
+         */}
+          {polls && !isLoading
+          ? polls.map((poll) => {
+              return (
+                <div className="pollC" style={{ marginTop: '20px', justifyContent:'center', alignItems:'center'}}>
+                    <h2>{poll.question}</h2>
+                 <div className="options">
+            {poll.options
+              ? poll.options.map((option) => {
+                  return (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        padding: '5px',
+                        borderBottom: '2px black solid',
+                        marginBottom: '12px',
+                      }}
+                    >
+                      {option.photo ? (
+                        <img
+                          src={`https://voteable-backend.onrender.com/uploads/${option.photo}`}
+                          className="optionImg"
+                        />
+                      ) : (
+                        ''
+                      )}
+                      <input
+                        style={{ accentColor: '#4600b6', cursor: 'pointer' }}
+                        className="option"
+                        type="radio"
+                        value={option.text}
+                        name="option"
+                        onClick={() => {
+                          setOption(option);
+                        }}
+                      />
+                      <p>{option.text}</p>
+                      <br></br>
+                      <br></br>
+                    </div>
+                  );
+                })
+              : ''}
+          </div>
+                 {error ? (
+            ''
+          ) : (
+            <button className={'vBTN'}>
+              <p>Next poll ➡️</p>
+            </button>
+          )}
+                
                   {/* <button
                   className="dBtn"
                   onClick={async () => {
@@ -562,28 +628,15 @@ function Home() {
                 >
                   Delete Poll
                 </button> */}
-                  <div>
-                    <CopyBoard
-                      onCopy={() => {
-                        setCopy(poll._id);
-                      }}
-                      text={` VoteAble | ${poll.question} \n \n https://voteable-app.onrender.com/poll/${poll._id}`}
-                    >
-                      <button className="Btn" style={{ marginLeft: '57%' }}>
-                        {copy == poll._id ? 'Copied Link ✅' : 'Copy Link 🔗'}
-                      </button>
-                    </CopyBoard>
-                  </div>
+                 
                 </div>
               );
             })
           : ''}
         {!polls && !isLoading ? (
           <div className="pollc">
-            <h1>No polls found</h1>
-            <Link to="/create-poll">
-              <button className="vpBtn">Create a poll</button>
-            </Link>
+            <h1>{error}</h1>
+            <p>The ID that you entered does not belong to a student of Aga Khan High School, Kampala. <br/> <br/>Please end the shinanigans and stop gallivanting</p>
           </div>
         ) : (
           ''
