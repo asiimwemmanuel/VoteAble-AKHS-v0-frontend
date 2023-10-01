@@ -8,9 +8,9 @@ import './Login.css';
 
 export default function Login() {
   // const ctx = useContext(Context);
-  const [name, setName] = useState('');
+  const [id, setID] = useState('');
   const [password, setPassword] = useState('');
-  const [nameErr, setNameErr] = useState('');
+  const [idErr, setNameErr] = useState('');
   const [passErr, setPassErr] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
   const [selectedClass, setSelectedClass] = useState('');
@@ -32,13 +32,13 @@ export default function Login() {
 
   const login = () => {
     if (
-      !name ||
+      !id ||
       !password ||
       !selectedGender ||
       !selectedClass ||
       !selectedHouse
     ) {
-      if (!name) setNameErr('Please enter a valid name');
+      if (!id) setNameErr('Please enter a valid id');
       if (!password) setPassErr('Please enter a valid password');
       if (!selectedGender) setPassErr('Please enter a gender');
       if (!selectedClass) setPassErr('Please select a class');
@@ -46,13 +46,41 @@ export default function Login() {
       return;
     }
 
-    localStorage.setItem('name', name);
-    localStorage.setItem('password', password);
-    localStorage.setItem('gender', selectedGender);
-    localStorage.setItem('class', selectedClass);
-    localStorage.setItem('house', selectedHouse);
+     async function checkID(id){
+      const res = await fetch(
+        'https://voteable-backend.onrender.com/v1/myPolls',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Student_ID: localStorage.getItem('Student_ID'),
+            password:localStorage.getItem('password')
+          }),
+        }
+       );
+       const data = res.json()
 
-    navigate('/polls');
+       if (res.ok) {
+         localStorage.setItem('Student_ID', id);
+         localStorage.setItem('password', password);
+         localStorage.setItem('gender', selectedGender);
+         localStorage.setItem('class', selectedClass);
+         localStorage.setItem('house', selectedHouse);
+         navigate('/polls');
+       }
+
+       if (data.error == "Student account does not exist") {
+        setNameErr("Wrong Student ID")
+       }
+       
+       if (data.error == "Invalid Student password") {
+         setPassErr("Invalid Student password")
+       }
+     }
+
+    checkID(id)
   };
 
   useEffect(() => {
@@ -67,9 +95,9 @@ export default function Login() {
         <h1 className="heading">Login</h1>
         <div>
           <input
-            name="name"
+            id="id"
             style={{ fontSize: '17px' }}
-            value={name}
+            value={id}
             placeholder="Student ID"
             className="joinInput"
             type="text"
@@ -78,15 +106,15 @@ export default function Login() {
               setNameErr('');
             }}
             onBlur={() => {
-              if (!name) setNameErr('Please enter a valid name');
+              if (!id) setNameErr('Please enter a valid id');
             }}
           />
-          {nameErr && <p className="namep">{nameErr}</p>}
+          {idErr && <p className="idp">{idErr}</p>}
         </div>
         <div>
           <input
             style={{ fontSize: '17px' }}
-            name="password"
+            id="password"
             placeholder="Password"
             value={password}
             className="joinInput mt-20"
