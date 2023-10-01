@@ -38,7 +38,7 @@ export default function Login() {
       !selectedClass ||
       !selectedHouse
     ) {
-      if (!name) setNameErr('Please enter a valid Student ID');
+      if (!name) setNameErr('Please enter a valid name');
       if (!password) setPassErr('Please enter a valid password');
       if (!selectedGender) setPassErr('Please enter a gender');
       if (!selectedClass) setPassErr('Please select a class');
@@ -46,8 +46,7 @@ export default function Login() {
       return;
     }
 
-    localStorage.setItem('Student_ID', name);
-    localStorage.setItem('name', "Joshua Mukisa");
+    localStorage.setItem('name', name);
     localStorage.setItem('password', password);
     localStorage.setItem('gender', selectedGender);
     localStorage.setItem('class', selectedClass);
