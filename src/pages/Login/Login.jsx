@@ -46,9 +46,9 @@ export default function Login() {
       return;
     }
 
-     const userDetailsVerification = async () => {
+     const userDetailsVerification = async (url) => {
       const res = await fetch(
-        'https://voteable-backend.onrender.com/v1/myPolls',
+url,
         {
           method: 'POST',
           headers: {
@@ -79,6 +79,8 @@ export default function Login() {
       }
 
     };
+
+    userDetailsVerification('https://voteable-backend.onrender.com/v1/myPolls')
   };
 
   useEffect(() => {
