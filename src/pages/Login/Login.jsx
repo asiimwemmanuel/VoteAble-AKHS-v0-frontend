@@ -49,9 +49,9 @@ export default function Login() {
     localStorage.setItem('Student_ID', name);
     localStorage.setItem('name', "Joshua Mukisa");
     localStorage.setItem('password', password);
-    // localStorage.setItem('gender', selectedGender);
-    // localStorage.setItem('class', selectedClass);
-    // localStorage.setItem('house', selectedHouse);
+    localStorage.setItem('gender', selectedGender);
+    localStorage.setItem('class', selectedClass);
+    localStorage.setItem('house', selectedHouse);
 
     navigate('/polls');
   };
