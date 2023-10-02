@@ -46,7 +46,8 @@ export default function Login() {
       return;
     }
 
-    localStorage.setItem('name', name);
+    localStorage.setItem('Student_ID', name);
+    localStorage.setItem('name', "Joshua Mukisa");
     localStorage.setItem('password', password);
     localStorage.setItem('gender', selectedGender);
     localStorage.setItem('class', selectedClass);
