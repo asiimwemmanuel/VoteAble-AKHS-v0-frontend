@@ -102,7 +102,88 @@ export default function Login() {
           />
           {passErr && <p className="passp">{passErr}</p>}
         </div>
- 
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: '15px',
+          }}
+        >
+          {/* <label htmlFor="classDropdown" style={{ marginBottom: '5px', fontSize: '16px' }}>Class:</label> */}
+          <select
+            id="classDropdown"
+            value={selectedClass}
+            onChange={handleClassChange}
+            className="joinInput mt-10"
+            style={{
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '16px',
+              width: '100%',
+            }}
+          >
+            <option value="">Select a class</option>
+            <option value="Y7">Y7</option>
+            <option value="Y8">Y8</option>
+            <option value="Y9">Y9</option>
+            <option value="Y10">Y10</option>
+            <option value="Y11">Y11</option>
+            <option value="IB1">IB1</option>
+            <option value="IB2">IB2</option>
+          </select>
+          {/* House Selection */}
+          {/* <label htmlFor="houseDropdown" style={{ marginTop: '10px', marginBottom: '5px', fontSize: '16px' }}>House:</label> */}
+          <select
+            id="houseDropdown"
+            value={selectedHouse}
+            onChange={handleHouseChange}
+            className="joinInput"
+            style={{
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '16px',
+              width: '100%',
+            }}
+          >
+            <option value="">Select a house</option>
+            <option value="Hawks">Hawks</option>
+            <option value="Falcons">Falcons</option>
+            <option value="Eagles">Eagles</option>
+            <option value="Kites">Kites</option>
+          </select>
+          <form
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: '15px',
+            }}
+          >
+            <label style={{ marginRight: '20px' }}>
+              <input
+                type="radio"
+                value="male"
+                checked={selectedGender === 'male'}
+                onChange={handleGenderChange}
+                style={{ accentColor: '#4600b6' }}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="female"
+                checked={selectedGender === 'female'}
+                onChange={handleGenderChange}
+                style={{ accentColor: '#4600b6' }}
+              />
+              Female
+            </label>
+          </form>
+        </div>
         <button
           className={'button mt-20'}
           onClick={login}
