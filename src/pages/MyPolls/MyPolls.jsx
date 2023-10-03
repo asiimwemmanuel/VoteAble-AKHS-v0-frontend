@@ -573,6 +573,7 @@ function Home() {
                         padding: '5px',
                         borderBottom: '2px black solid',
                         marginBottom: '12px',
+                        textAlign:'center'
                       }}
                     >
                       {option.photo ? (
