@@ -131,7 +131,7 @@ function Poll(props) {
                           setOption(option);
                         }}
                       />
-                      <p style={{fontSize:"12px"}}><b>{option.text}</b></p>
+                      <p style={{fontSize:"16px"}}><b>{option.text}</b></p>
                       <br></br>
                       <br></br>
                     </div>
