@@ -25,7 +25,7 @@ function VotedUser() {
 
     async function votedUsers(param) {
       const res = await fetch(
-        `http://localhost:8000/v1/voted-users/${param}`,
+        `https://voteable-backend.onrender.com/v1/voted-users/${param}`,
         {
           method: 'GET',
         }
@@ -48,7 +48,7 @@ function VotedUser() {
 
     async function poll() {
       const res = await fetch(
-        `http://localhost:8000/v1/poll/${pollId}`,
+        `https://voteable-backend.onrender.com/v1/poll/${pollId}`,
         {
           method: 'GET',
         }

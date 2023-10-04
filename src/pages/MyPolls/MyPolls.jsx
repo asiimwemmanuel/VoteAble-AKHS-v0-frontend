@@ -43,7 +43,7 @@ function Home() {
       setIsLoading(true);
 
       const res = await fetch(
-        'http://localhost:8000/v1/myPolls',
+        'https://voteable-backend.onrender.com/v1/myPolls',
         {
           method: 'POST',
           headers: {

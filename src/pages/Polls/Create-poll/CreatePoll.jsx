@@ -99,7 +99,7 @@ function CreatePoll() {
 
     try {
       const res = await fetch(
-        'http://localhost:8000/v1/create-poll',
+        'https://voteable-backend.onrender.com/v1/create-poll',
         {
           method: 'POST',
           headers: {
