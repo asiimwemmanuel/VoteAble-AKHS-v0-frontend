@@ -121,7 +121,7 @@ function Poll(props) {
                       ) : (
                         ''
                       )}
-                      <input
+                      <inp
                         style={{ accentColor: '#4600b6', cursor: 'pointer' }}
                         className="option"
                         type="radio"
@@ -130,9 +130,8 @@ function Poll(props) {
                         onClick={() => {
                           setOption(option);
                         }}
-                      >
+                      />
                         <p style={{ fontSize: "16px" }}><b>{option.text}</b></p>
-                        </input>
                       <br></br>
                       <br></br>
                     </div>
