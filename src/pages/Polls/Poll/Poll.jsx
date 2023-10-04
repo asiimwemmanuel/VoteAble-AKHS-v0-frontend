@@ -130,8 +130,9 @@ function Poll(props) {
                         onClick={() => {
                           setOption(option);
                         }}
-                      />
-                      <p style={{fontSize:"16px"}}><b>{option.text}</b></p>
+                      >
+                        <p style={{ fontSize: "16px" }}><b>{option.text}</b></p>
+                        </input>
                       <br></br>
                       <br></br>
                     </div>
