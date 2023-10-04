@@ -191,12 +191,7 @@ export default function Login() {
         >
           <p style={{ fontSize: '17px' }}>Login</p>
         </button>
-        {/* <Link to="/signup" className="fPL">
-          <p>Not signed up? Signup here</p>
-        </Link>
-        <Link to="/forgot-password" className="ALSU">
-          <p>Forgot password?</p>
-        </Link> */}
+        
       </div>
     </div>
   );

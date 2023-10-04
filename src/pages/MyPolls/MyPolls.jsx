@@ -9,6 +9,7 @@ import Menuu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Modal from '@mui/material/Modal';
 import CopyBoard from 'react-copy-to-clipboard';
+import Poll from '../Polls/Poll/Poll.jsx'
 
 function Home() {
   const [copy, setCopy] = useState(true);
@@ -42,7 +43,7 @@ function Home() {
       setIsLoading(true);
 
       const res = await fetch(
-        'https://voteable-backend.onrender.com/v1/myPolls',
+        'http://localhost:8000/v1/myPolls',
         {
           method: 'POST',
           headers: {
@@ -88,6 +89,7 @@ function Home() {
         {signupFirstErr && (
           <div className="pollc">
             <h1>Login First to access polls</h1>
+            <p style={{marginLeft:'10px', marginRight:'10px'}}>Please login with valid credentials to vote as a student of Aga Khan High School, Kampala. <br/> <br/>Please end the shinanigans and stop gallivanting</p>
           </div>
         )}
         {/* {error.trim() == '' ? (
@@ -97,7 +99,7 @@ function Home() {
         ) : (
           ''
         )} */}
-        {isLoading ? (
+        {!signupFirstErr && isLoading ? (
           <div
             style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
           >
@@ -556,88 +558,13 @@ function Home() {
           : ''}
          */}
           {polls && !isLoading
-          ? polls.map((poll) => {
-              return (
-                <div className="pollC" style={{ marginTop: '20px', justifyContent:'center', alignItems:'center'}}>
-                    <h2>{poll.question}</h2>
-                 <div className="options">
-            {poll.options
-              ? poll.options.map((option) => {
-                  return (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-start',
-                        alignItems: 'center',
-                        padding: '5px',
-                        borderBottom: '2px black solid',
-                        marginBottom: '12px',
-                        textAlign:'center'
-                      }}
-                    >
-                      {option.photo ? (
-                        <img
-                          src={`https://voteable-backend.onrender.com/uploads/${option.photo}`}
-                          className="optionImg"
-                        />
-                      ) : (
-                        ''
-                      )}
-                      <input
-                        style={{ accentColor: '#4600b6', cursor: 'pointer' }}
-                        className="option"
-                        type="radio"
-                        value={option.text}
-                        name="option"
-                        onClick={() => {
-                          setOption(option);
-                        }}
-                      />
-                      <p>{option.text}</p>
-                      <br></br>
-                      <br></br>
-                    </div>
-                  );
-                })
-              : ''}
-          </div>
-                 {error ? (
-            ''
-          ) : (
-            <button className={'vBTN'}>
-              <p>Next poll ➡️</p>
-            </button>
-          )}
-                
-                  {/* <button
-                  className="dBtn"
-                  onClick={async () => {
-                    const res = await fetch(
-                      `https://voteable-backend.onrender.com/v1/delete-poll/${ poll._id }`,
-                      {
-                        method: "DELETE",
-                        credentials: "include",
-                      }
-                    );
-                    const data = await res.json();
-                    if (data.message === "Poll successfully deleted") {
-                      alert("Poll deleted");
-                      window.location.reload();
-                    }
-                  }}
-                >
-                  Delete Poll
-                </button> */}
-                 
-                </div>
-              );
-            })
+          ? polls.map((poll) => <Poll pollId={poll._id}/>)
           : ''}
         {!polls && !isLoading ? (
           <div className="pollc">
             <h1>{error}</h1>
-            <p>The ID that you entered does not belong to a student of Aga Khan High School, Kampala. <br/> <br/>Please end the shinanigans and stop gallivanting</p>
+           {error == 'Student account does not exist' ?  <p>The ID that you entered does not belong to a student of Aga Khan High School, Kampala. <br/> <br/>Please end the shinanigans and stop gallivanting</p> : ''}
+          
           </div>
         ) : (
           ''

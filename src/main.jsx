@@ -37,42 +37,42 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
-  {
-    path: '/voted-users/:pollId',
-    element: <VotedUsers />,
-  },
-  {
-    path: '/poll/results/:pollId',
-    element: <Results />,
-  },
+  // {
+  //   path: '/voted-users/:pollId',
+  //   element: <VotedUsers />,
+  // },
+  // {
+  //   path: '/poll/results/:pollId',
+  //   element: <Results />,
+  // },
   {
     path: '/create-poll',
     element: <CreatePoll />,
   },
-  {
-    path: '/poll/:pollId',
-    element: <Poll />,
-  },
+  // {
+  //   path: '/poll/:pollId',
+  //   element: <Poll />,
+  // },
   {
     path: '/polls',
     element: <MyPolls />,
   },
-  {
-    path: '/subscribe',
-    element: <Subscription />,
-  },
-  {
-    path: '/create-poll-chain',
-    element: <CreatePollChain />,
-  },
-  {
-    path: '/my-poll-chains',
-    element: <PollChains />,
-  },
-  {
-    path: '/poll-chain/:id',
-    element: <PollChain />,
-  },
+  // {
+  //   path: '/subscribe',
+  //   element: <Subscription />,
+  // },
+  // {
+  //   path: '/create-poll-chain',
+  //   element: <CreatePollChain />,
+  // },
+  // {
+  //   path: '/my-poll-chains',
+  //   element: <PollChains />,
+  // },
+  // {
+  //   path: '/poll-chain/:id',
+  //   element: <PollChain />,
+  // },
   {
     path: '/privacy-policy',
     element: <PrivacyPolicy />,

@@ -34,7 +34,7 @@ function PollChains() {
     const myPolls = async () => {
       setIsLoading(true);
       const res = await fetch(
-        'https://voteable-backend.onrender.com/v1/my-poll-chains',
+        'http://localhost:8000/v1/my-poll-chains',
         {
           method: 'GET',
         }
@@ -305,7 +305,7 @@ function PollChains() {
                     className="dBtn"
                     onClick={async () => {
                       const res = await fetch(
-                        `https://voteable-backend.onrender.com/v1/delete-poll-chain/${poll._id}`,
+                        `http://localhost:8000/v1/delete-poll-chain/${poll._id}`,
                         {
                           method: 'DELETE',
                           credentials: 'include',
@@ -344,7 +344,7 @@ function PollChains() {
                       <RWebShare
                         data={{
                           text: `VoteAble - ${poll.name}`,
-                          url: `https://voteable-app.onrender.com/${poll.name}`,
+                          url: `http://localhost:5173/${poll.name}`,
                         }}
                         onClick={() => console.log('shared successfully!')}
                       >

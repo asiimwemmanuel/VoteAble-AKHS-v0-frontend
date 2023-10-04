@@ -18,7 +18,7 @@ function Poll(props) {
     async function poll() {
       setIsLoading(true);
       const res = await fetch(
-        `https://voteable-backend.onrender.com/v1/poll/${pollId}`,
+        `http://localhost:8000/v1/poll/${pollId ? pollId : props.pollId}`,
         {
           method: 'GET',
         }
@@ -39,7 +39,7 @@ function Poll(props) {
   async function vote() {
     const optiontext = option.text;
     const res = await fetch(
-      `https://voteable-backend.onrender.com/v1/vote/${pollId}`,
+      `http://localhost:8000/v1/vote/${pollId ? pollId : props.pollId}`,
       {
         method: 'POST',
         body: JSON.stringify({
@@ -66,11 +66,11 @@ function Poll(props) {
   }
   return (
     <div
-      className="joinOuterContainer"
-      style={{ backgroundImage: 'linear-gradient(180deg,#17005c, #4600b6)' }}
+      // className="joinOuterContainer"
+      // style={{ backgroundImage: 'linear-gradient(180deg,#17005c, #4600b6)' }}
     >
-      <Header />
-      {isLoading ? (
+      {/* <Header /> */}
+      {/* {isLoading ? (
         <CircularProgress
           style={{
             color: 'white',
@@ -79,8 +79,8 @@ function Poll(props) {
             // left: "40%",
           }}
         />
-      ) : (
-        <div className="pollC" style={{ marginTop: '10%' }}>
+      ) : ( */}
+        <div className="pollC" style={{ marginTop: '10%', height:'550px', width:'370px', flexWrap:'wrap' }}>
           <h2>{pollNotFound ? pollNotFound : question}</h2>
           {signupFirstErr === 'Voted' ? (
             <h2
@@ -115,7 +115,7 @@ function Poll(props) {
                     >
                       {option.photo ? (
                         <img
-                          src={`https://voteable-backend.onrender.com/uploads/${option.photo}`}
+                          src={`http://localhost:8000/uploads/${option.photo}`}
                           className="optionImg"
                         />
                       ) : (
@@ -147,20 +147,9 @@ function Poll(props) {
             </button>
           )}
 
-          {!pollNotFound ? (
-            <button
-              className={'vBTN'}
-              onClick={() => {
-                navigate(`/poll/results/${pollId}`);
-              }}
-            >
-              <p>Next poll ➡️</p>
-            </button>
-          ) : (
-            ''
-          )}
+        
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 }
