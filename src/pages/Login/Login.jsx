@@ -13,47 +13,64 @@ export default function Login() {
   const [nameErr, setNameErr] = useState('');
   const [passErr, setPassErr] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
-  const [selectedClass, setSelectedClass] = useState('');
-  const [selectedHouse, setSelectedHouse] = useState('');
 
   const navigate = useNavigate();
 
   const handleGenderChange = (event) => {
     setSelectedGender(event.target.value);
-  };
+  }
 
-  const handleClassChange = (event) => {
-    setSelectedClass(event.target.value);
-  };
+  async function user() {
+      const res = await fetch(
+        `https://voteable-backend.onrender.com/v1/user`,
+        {
+          method: 'POST',
+           headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Student_ID: name,
+            password: password,
+          }),
+        }
+      );
+    const data = await res.json()
 
-  const handleHouseChange = (event) => {
-    setSelectedHouse(event.target.value);
-  };
+       if (data.error == 'Invalid password') {
+         setPassErr(data.error)
+         return
+    }
 
-  const login = () => {
+    if (data.error == 'Invalid student ID, please try again') {
+      setNameErr(data.error)
+      return
+    }
+    return data
+    }
+
+  const login = async () => {
     if (
       !name ||
       !password ||
-      !selectedGender ||
-      !selectedClass ||
-      !selectedHouse
+      !selectedGender
     ) {
-      if (!name) setNameErr('Please enter a valid name');
-      if (!password) setPassErr('Please enter a valid password');
-      if (!selectedGender) setPassErr('Please enter a gender');
-      if (!selectedClass) setPassErr('Please select a class');
-      if (!selectedHouse) setPassErr('Please select a house');
-      return;
+      return
+    }
+
+    const data2 = await user()
+
+    if (data2.error) {
+      return
     }
 
     localStorage.setItem('Student_ID', name);
     localStorage.setItem('name', "Joshua Mukisa");
     localStorage.setItem('password', password);
     localStorage.setItem('gender', selectedGender);
-    localStorage.setItem('class', selectedClass);
-    localStorage.setItem('house', selectedHouse);
 
-    navigate('/polls');
+    if (!nameErr || !passErr) {
+      navigate('/polls');
+   }
   };
 
   useEffect(() => {
@@ -111,7 +128,7 @@ export default function Login() {
           }}
         >
           {/* <label htmlFor="classDropdown" style={{ marginBottom: '5px', fontSize: '16px' }}>Class:</label> */}
-          <select
+          {/* <select
             id="classDropdown"
             value={selectedClass}
             onChange={handleClassChange}
@@ -132,10 +149,10 @@ export default function Login() {
             <option value="Y11">Y11</option>
             <option value="IB1">IB1</option>
             <option value="IB2">IB2</option>
-          </select>
+          </select> */}
           {/* House Selection */}
           {/* <label htmlFor="houseDropdown" style={{ marginTop: '10px', marginBottom: '5px', fontSize: '16px' }}>House:</label> */}
-          <select
+          {/* <select
             id="houseDropdown"
             value={selectedHouse}
             onChange={handleHouseChange}
@@ -153,7 +170,7 @@ export default function Login() {
             <option value="Falcons">Falcons</option>
             <option value="Eagles">Eagles</option>
             <option value="Kites">Kites</option>
-          </select>
+          </select> */}
           <form
             style={{
               display: 'flex',

@@ -53,6 +53,7 @@ function Results() {
       const data = await res.json();
       if (data.error) {
         setPollNotFound('Poll not found, ID is incorrect');
+        return
       } else {
         setQuestion(data.data.question);
         setOptions(data.data.options);

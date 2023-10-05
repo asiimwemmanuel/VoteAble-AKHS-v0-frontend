@@ -52,9 +52,11 @@ function PollChains() {
 
       if (data.error === 'Login First to access polls') {
         setSignupFirstErr('You have to login first');
+        return
       }
       if (data.error === 'No polls found') {
         setNoPollsFound(true);
+        return
       }
     };
     myPolls();

@@ -30,6 +30,7 @@ function DropDown(props) {
   const logout = async () => {
     localStorage.removeItem('name');
     localStorage.removeItem('gender');
+    localStorage.removeItem('Student_ID');
     localStorage.removeItem('password');
     localStorage.removeItem('class');
     localStorage.removeItem('house');

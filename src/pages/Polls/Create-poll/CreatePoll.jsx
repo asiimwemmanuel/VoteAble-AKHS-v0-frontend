@@ -127,6 +127,7 @@ function CreatePoll() {
 
       if (data.error === 'You have to login / signup to create a poll') {
         setOptionErr('You have to login to create a poll');
+        return
       }
     } catch (error) {
       console.error('Error creating poll:', error);

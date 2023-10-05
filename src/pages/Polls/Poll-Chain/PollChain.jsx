@@ -55,9 +55,11 @@ function PollChain() {
 
       if (data.error === 'You have to login / signup first') {
         setSignupFirstErr('You have to login first');
+        return
       }
       if (data.error === 'No polls found') {
         setNoPollsFound(true);
+        return
       }
     };
     myPolls();

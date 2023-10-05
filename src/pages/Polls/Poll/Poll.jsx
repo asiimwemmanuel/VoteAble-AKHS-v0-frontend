@@ -27,6 +27,8 @@ function Poll(props) {
       const data = await res.json();
       if (data.error) {
         setPollNotFound(data.error);
+        return
+        return
       } else {
         setQuestion(data.data.question);
         setOptions(data.data.options);
@@ -61,6 +63,7 @@ function Poll(props) {
     }
     if (data.error) {
       setSignupFirstErr(data.error);
+      return
     }
 
   }
@@ -113,15 +116,8 @@ function Poll(props) {
                         marginBottom: '12px',
                       }}
                     >
-                      {option.photo ? (
-                        <img
-                          src={`https://voteable-backend.onrender.com/uploads/${option.photo}`}
-                          className="optionImg"
-                        />
-                      ) : (
-                        ''
-                      )}
-                      <inp
+                      
+                      <input
                         style={{ accentColor: '#4600b6', cursor: 'pointer' }}
                         className="option"
                         type="radio"
@@ -131,7 +127,15 @@ function Poll(props) {
                           setOption(option);
                         }}
                       />
-                        <p style={{ fontSize: "16px" }}><b>{option.text}</b></p>
+                      {option.photo ? (
+                        <img
+                          src={`https://voteable-backend.onrender.com/uploads/${option.photo}`}
+                          className="optionImg"
+                        />
+                      ) : (
+                        ''
+                      )}
+                        <p style={{ fontSize: "16px", margin:'10px' }}><b>{option.text}</b></p>
                       <br></br>
                       <br></br>
                     </div>

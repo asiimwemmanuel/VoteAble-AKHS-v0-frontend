@@ -37,6 +37,7 @@ function VotedUser() {
 
       if (data.error) {
         setErr(data.error);
+        return
       }
       setIsLoading(false);
     }

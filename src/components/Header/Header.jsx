@@ -40,6 +40,7 @@ const Header = React.memo(function Header(props) {
 
   const logout = useCallback(async () => {
     localStorage.removeItem('name');
+    localStorage.removeItem('Student_ID');
     localStorage.removeItem('gender');
     localStorage.removeItem('password');
     localStorage.removeItem('class');

@@ -68,6 +68,7 @@ function Home() {
 
       if (data.error === "Student account does not exist") {
         setError(data.error);
+        return
       }
 
     };

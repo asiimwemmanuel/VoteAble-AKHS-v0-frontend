@@ -40,12 +40,15 @@ export default function Reset() {
 
       if (data.error === 'Invalid token') {
         setPassErr(invToken);
+        return
+        return
       } else if (data.error !== 'Invalid token') {
         setPassErr('');
       }
 
       if (data.error === 'You are already logged in') {
         setPassErr(signedInP);
+        return
       }
     }
 
