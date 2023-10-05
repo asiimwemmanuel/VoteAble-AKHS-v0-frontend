@@ -22,7 +22,7 @@ export default function Login() {
 
   async function user() {
       const res = await fetch(
-        `https://voteable-backend.onrender.com/v1/user`,
+        `https://voteabe-app.onrender.com/v1/user`,
         {
           method: 'POST',
            headers: {
