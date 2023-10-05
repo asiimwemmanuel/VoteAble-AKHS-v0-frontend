@@ -83,7 +83,7 @@ function Poll(props) {
           }}
         />
       ) : ( */}
-        <div className="pollC" style={{ marginTop: '10%', height:'550px', width:'370px', flexWrap:'wrap' }}>
+        <div className="pollC" style={{ marginTop: '10%', height:'650px', width:'370px', flexWrap:'wrap' }}>
           <h2>{pollNotFound ? pollNotFound : question}</h2>
           {signupFirstErr === 'Voted' ? (
             <h2
