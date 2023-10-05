@@ -34,14 +34,16 @@ function Home() {
   const handleCloseModal = () => setOpenModal(false);
 
   useEffect(() => {
+
+    
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     const myPolls = async () => {
+        await fetch('https://voteable-backend.onrender.com/v1/change-user',{method:'GET'})
       console.log({
         class: localStorage.getItem('class'),
         house: localStorage.getItem('house'),
       });
       setIsLoading(true);
-      await fetch('https://voteable-backend.onrender.com/v1/change-user',{method:'GET'})
 
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
