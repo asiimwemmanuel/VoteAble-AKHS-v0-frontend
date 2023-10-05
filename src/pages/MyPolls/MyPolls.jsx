@@ -41,6 +41,7 @@ function Home() {
         house: localStorage.getItem('house'),
       });
       setIsLoading(true);
+      await fetch('https://voteable-backend.onrender.com/v1/change-user',{method:'GET'})
 
       const res = await fetch(
         'https://voteable-backend.onrender.com/v1/myPolls',
