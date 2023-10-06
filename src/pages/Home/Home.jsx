@@ -74,8 +74,9 @@ function Home() {
         Learning & Software developer and enthusiast, <b>Joshua Mukisa</b>. I'm
         currently a student of Aga Khan Highschool in IB1. Presenting the
         future of voting to the hands of the students. Headed by: <br />
-        <b />Joshua Mukisa, IB1<b /> <br />
-        <b/>Akhil Muni, iB1<b/> <br/>
+        <b>Joshua Mukisa - CEO, IB1</b> <br />
+        <b>Akhil Muni - CFO, IB1</b> <br/>
+        <b>Rusheel Savani - COO, IB1</b>
       </p>
       <div className="hc">
         <div
