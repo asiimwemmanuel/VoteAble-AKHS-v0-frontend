@@ -64,7 +64,7 @@ export default function Login() {
     }
 
     localStorage.setItem('Student_ID', name);
-    localStorage.setItem('name', `${user.name}`);
+    localStorage.setItem('name', `${data2.name}`);
     localStorage.setItem('password', password);
     localStorage.setItem('gender', selectedGender);
 
