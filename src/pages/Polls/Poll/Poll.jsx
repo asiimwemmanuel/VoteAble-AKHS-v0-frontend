@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../../components/Header/Header.jsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import {Link} from "react-router-dom"
 import './Poll.css';
 function Poll(props) {
   const { pollId } = useParams();
