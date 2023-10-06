@@ -86,12 +86,6 @@ function Poll(props) {
       ) : ( */}
         <div className="pollC" style={{ marginTop: '10%',width:'370px', flexWrap:'wrap' }}>
         <h2>{pollNotFound ? pollNotFound : question}</h2>
-         <div>
-               <button className={'vBTN'} onClick={vote}>
-              <p>Vote</p>
-            </button>
-            <Link to={`/poll/results/${props.pollId}`}>Results</Link>
-           </div>
           {signupFirstErr === 'Voted' ? (
             <h2
               style={{
@@ -149,7 +143,13 @@ function Poll(props) {
                   );
                 })
               : ''}
-          </div>
+        </div>
+         {/* <div> */}
+               <button className={'vBTN'} onClick={vote} style={{padding:'10px', justifyContent:'center', display:'flex'}}>
+              Vote
+        </button>
+        <Link to={`/poll/results/${props.pollId}`} className='vBTN' style={{padding:'10px', justifyContent:'center', display:'flex'}}>Results </Link>
+           {/* </div> */}
           {/* {pollNotFound ? (
             ''
           ) : (
