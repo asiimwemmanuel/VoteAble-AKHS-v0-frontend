@@ -26,7 +26,7 @@ export default function Forgot() {
     if (name && email) {
       setIsLoading(true);
       const res = await fetch(
-        'https://voteabe-app.onrender.com/v1/forgot-password',
+        'https://voteable-backend.onrender.com/v1/forgot-password',
         {
           method: 'POST',
           credentials: 'include',

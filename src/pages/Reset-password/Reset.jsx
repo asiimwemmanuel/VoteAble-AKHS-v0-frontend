@@ -21,7 +21,7 @@ export default function Reset() {
   const resetPass = async function () {
     if (password) {
       const res = await fetch(
-        `https://voteabe-app.onrender.com/v1/reset-password/${resetToken}`,
+        `https://voteable-backend.onrender.com/v1/reset-password/${resetToken}`,
         {
           method: 'POST',
           credentials: 'include',

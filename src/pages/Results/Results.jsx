@@ -44,7 +44,7 @@ function Results() {
     async function poll() {
       setIsLoading(true);
       const res = await fetch(
-        `https://voteabe-app.onrender.com/v1/poll/${pollId}`,
+        `https://voteabe-backend.onrender.com/v1/poll/${pollId}`,
         {
           method: 'GET',
         }

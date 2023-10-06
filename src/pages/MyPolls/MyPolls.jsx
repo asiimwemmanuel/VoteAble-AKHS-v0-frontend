@@ -18,7 +18,7 @@ function Home() {
     const myPolls = async () => {
       setIsLoading(true);
 
-      const res = await fetch('https://voteabe-app.onrender.com/v1/myPolls', {
+      const res = await fetch('https://voteable-backend.onrender.com/v1/myPolls', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
