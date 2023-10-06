@@ -76,7 +76,8 @@ function Home() {
         future of voting to the hands of the students. Operated by: <br />
         <b>Joshua Mukisa - Cheif Executive Officer, IB1</b> <br />
         <b>Akhil Muni - Chief Finance Officer, IB1</b> <br/>
-        <b>Rusheel Savani - Chief Operations Officer, IB1</b> <br/>
+        <b>Rusheel Savani - Chief Operations Officer, IB1</b> <br />
+        <b>Khush Pratik Shah - Operations Manager, IB1</b> <br/>
         <b>Alishaan Budhwani - Assistant Manager, IB1</b> <br/>
       </p>
       <div className="hc">
