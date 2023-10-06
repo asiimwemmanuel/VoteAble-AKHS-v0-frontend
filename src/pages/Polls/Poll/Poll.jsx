@@ -146,9 +146,12 @@ function Poll(props) {
           {pollNotFound ? (
             ''
           ) : (
-            <button className={'vBTN'} onClick={vote}>
+            <div>
+               <button className={'vBTN'} onClick={vote}>
               <p>Vote</p>
             </button>
+            <Link to={`/poll/results/${props.pollId}`}>Results</Link>
+           </div>
           )}
 
         

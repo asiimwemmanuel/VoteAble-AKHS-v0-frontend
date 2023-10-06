@@ -41,10 +41,10 @@ const router = createBrowserRouter([
   //   path: '/voted-users/:pollId',
   //   element: <VotedUsers />,
   // },
-  // {
-  //   path: '/poll/results/:pollId',
-  //   element: <Results />,
-  // },
+  {
+    path: '/poll/results/:pollId',
+    element: <Results />,
+  },
   {
     path: '/create-poll',
     element: <CreatePoll />,
