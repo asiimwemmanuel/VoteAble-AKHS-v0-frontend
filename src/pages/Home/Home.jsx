@@ -77,7 +77,6 @@ function Home() {
         <b>Joshua Mukisa - CEO, IB1</b> <br />
         <b>Akhil Muni - CFO, IB1</b> <br/>
         <b>Rusheel Savani - COO, IB1</b> <br/>
-        {/* <b>Alishaan Bhud - COO, IB1</b> */}
       </p>
       <div className="hc">
         <div
