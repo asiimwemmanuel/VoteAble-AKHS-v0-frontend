@@ -73,12 +73,12 @@ function Home() {
         Introducing VoteAble, the online voting platform engineered by AI, Deep
         Learning & Software developer and enthusiast, <b>Joshua Mukisa</b>. I'm
         currently a student of Aga Khan Highschool in IB1. Presenting the
-        future of voting to the hands of the students. Operated by: <br />
+        {/* future of voting to the hands of the students. Operated by: <br />
         <b>Joshua Mukisa - Cheif Executive Officer, IB1</b> <br />
         <b>Akhil Muni - Chief Finance Officer, IB1</b> <br/>
         <b>Rusheel Savani - Chief Operations Officer, IB1</b> <br />
         <b>Khush Pratik Shah - Operations Manager, IB1</b> <br/>
-        <b>Alishaan Budhwani - Assistant Manager, IB1</b> <br/>
+        <b>Alishaan Budhwani - Assistant Manager, IB1</b> <br/> */}
       </p>
       <div className="hc">
         <div
