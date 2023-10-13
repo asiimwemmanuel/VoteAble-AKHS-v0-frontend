@@ -145,7 +145,7 @@ function Poll(props) {
               : ''}
         </div>
          {/* <div> */}
-               <button className={'vBTN'} onClick={vote} style={{padding:'10px', justifyContent:'center', display:'flex'}}>
+               <button className={'vBTN'} onClick={vote} style={{padding:'10px', justifyContent:'center', display:'flex', fontSize:'18px'}}>
               Vote
         </button>
         <Link to={`/poll/results/${props.pollId}`} className='vBTN' style={{padding:'10px', justifyContent:'center', display:'flex'}}>Results </Link>
