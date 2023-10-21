@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import avatarPic from '../../assets/VoteAble logo.png';
-import Header from '../../components/Header/Header.jsx';
-import './Reset.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import avatarPic from "../../assets/VoteAble logo.png";
+import Header from "../../components/Header/Header.jsx";
+import "./Reset.css";
 
 export default function Reset() {
-	const [password, setPassword] = useState('');
+	const [password, setPassword] = useState("");
 	const { resetToken } = useParams();
 	const [passErr, setPassErr] = useState();
 
@@ -23,10 +23,10 @@ export default function Reset() {
 			const res = await fetch(
 				`https://voteable-backend.onrender.com/v1/reset-password/${resetToken}`,
 				{
-					method: 'POST',
-					credentials: 'include',
+					method: "POST",
+					credentials: "include",
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
 						password: password,
@@ -34,20 +34,20 @@ export default function Reset() {
 				}
 			);
 			if (res.status === 200) {
-				navigate('/home');
+				navigate("/home");
 			}
 			const data = await res.json();
 
-			if (data.error === 'Invalid token') {
+			if (data.error === "Invalid token") {
 				setPassErr(invToken);
-				return
-			} else if (data.error !== 'Invalid token') {
-				setPassErr('');
+				return;
+			} else if (data.error !== "Invalid token") {
+				setPassErr("");
 			}
 
-			if (data.error === 'You are already logged in') {
+			if (data.error === "You are already logged in") {
 				setPassErr(signedInP);
-				return
+				return;
 			}
 		}
 
@@ -60,12 +60,12 @@ export default function Reset() {
 	};
 
 	const Btn = (
-		<button className={'button mt-20'} type="submit" onClick={resetPass}>
+		<button className={"button mt-20"} type="submit" onClick={resetPass}>
 			<p>Login</p>
 		</button>
 	);
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 	}, []);
 
 	return (
@@ -83,7 +83,7 @@ export default function Reset() {
 						type="password"
 						onChange={(event) => {
 							setPassword(event.target.value);
-							setPassErr('');
+							setPassErr("");
 						}}
 						onBlur={() => {
 							if (!password) {
@@ -94,7 +94,7 @@ export default function Reset() {
 							}
 						}}
 					/>
-					{passErr ? passErr : ''}
+					{passErr ? passErr : ""}
 				</div>
 				{Btn}
 			</div>

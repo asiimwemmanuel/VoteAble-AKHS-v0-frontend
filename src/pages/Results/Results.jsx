@@ -1,16 +1,16 @@
-import { CircularProgress } from '@mui/material';
-import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
-import React, { useEffect, useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { useParams } from 'react-router-dom';
-import Header from '../../components/Header/Header.jsx';
-import './Results.css';
+import { CircularProgress } from "@mui/material";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
+import React, { useEffect, useState } from "react";
+import { Doughnut } from "react-chartjs-2";
+import { useParams } from "react-router-dom";
+import Header from "../../components/Header/Header.jsx";
+import "./Results.css";
 // import sikeNigga from '../../assets/sike-nigga.jpeg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-ChartJS.defaults.plugins.legend.position = 'bottom';
-ChartJS.defaults.color = 'black';
+ChartJS.defaults.plugins.legend.position = "bottom";
+ChartJS.defaults.color = "black";
 ChartJS.defaults.layout.padding = 20;
 ChartJS.defaults.responsive = true;
 ChartJS.defaults.maintainAspectRatio = false;
@@ -30,8 +30,8 @@ function Results() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	function getRandomColor() {
-		let letters = '0123456789ABCDEF';
-		let color = '#';
+		let letters = "0123456789ABCDEF";
+		let color = "#";
 
 		for (let i = 0; i < 6; i++) {
 			color += letters[Math.floor(Math.random() * 16)];
@@ -40,20 +40,20 @@ function Results() {
 	}
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 		async function poll() {
 			setIsLoading(true);
 			const res = await fetch(
 				`https://voteable-backend.onrender.com/v1/poll/${pollId}`,
 				{
-					method: 'GET',
+					method: "GET",
 				}
 			);
 			setIsLoading(false);
 			const data = await res.json();
 			if (data.error) {
-				setPollNotFound('Poll not found, ID is incorrect');
-				return
+				setPollNotFound("Poll not found, ID is incorrect");
+				return;
 			} else {
 				setQuestion(data.data.question);
 				setOptions(data.data.options);
@@ -79,20 +79,20 @@ function Results() {
 		labels: options
 			? options.map((opt) => {
 					return `${opt.text}`;
-				})
-			: '',
+			  })
+			: "",
 		datasets: [
 			{
 				data: options
 					? options.map((opt) => {
 							return opt.votes;
-						})
-					: '',
+					  })
+					: "",
 				backgroundColor: options
 					? options.map((opt) => {
 							return getRandomColor();
-						})
-					: '',
+					  })
+					: "",
 				borderWidth: 0,
 				hoverOffset: 20,
 				spacing: 0,
@@ -102,9 +102,9 @@ function Results() {
 	return (
 		<div
 			style={{
-				display: 'flex',
-				justifyContent: 'center',
-				flexDirection: 'column',
+				display: "flex",
+				justifyContent: "center",
+				flexDirection: "column",
 			}}
 		>
 			<div className="joinOuterContainer">
@@ -112,36 +112,36 @@ function Results() {
 				{isLoading ? (
 					<CircularProgress
 						style={{
-							color: 'white',
+							color: "white",
 							// position: "absolute",
 							// top: "20%",
 							// left: "40%",
 						}}
 					/>
 				) : (
-					''
+					""
 				)}
 				{pollNotFound ? (
-					<div className="pollc" style={{ height: '100px' }}>
+					<div className="pollc" style={{ height: "100px" }}>
 						<h1>Poll not found</h1>
 					</div>
 				) : (
-					''
+					""
 				)}
 				{!isLoading && options ? (
 					<div
 						style={{
-							height: '85%',
-							width: '550px',
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'center',
-							alignItems: 'center',
-							marginTop: '25px',
+							height: "85%",
+							width: "550px",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							alignItems: "center",
+							marginTop: "25px",
 						}}
 					>
-						<h1 style={{ color: 'white' }}>{question}</h1>
-						<p style={{ color: 'white' }}>
+						<h1 style={{ color: "white" }}>{question}</h1>
+						<p style={{ color: "white" }}>
 							<i>Refresh to change slice colours</i>
 						</p>
 						<div className="dNut">
@@ -151,7 +151,7 @@ function Results() {
 						</div>
 					</div>
 				) : (
-					''
+					""
 				)}
 				{/* <img src={sikeNigga} alt='sikeNigga' style={{ height: '400px', marginLeft: '10px', marginRight: '10px' }} /> */}
 			</div>

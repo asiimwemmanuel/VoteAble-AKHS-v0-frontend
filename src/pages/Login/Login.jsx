@@ -1,109 +1,106 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import avatarPic from '../../assets/VoteAble logo.png';
-import Header from '../../components/Header/Header.jsx';
+import React, { useEffect, useState } from "react";
+// import Link from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import avatarPic from "../../assets/VoteAble logo.png";
+import Header from "../../components/Header/Header.jsx";
 // import Context from "../../Context/Context";
 
-import './Login.css';
+import "./Login.css";
 
 export default function Login() {
 	// const ctx = useContext(Context);
-	const [name, setName] = useState('');
-	const [password, setPassword] = useState('');
-	const [nameErr, setNameErr] = useState('');
-	const [passErr, setPassErr] = useState('');
-	const [selectedGender, setSelectedGender] = useState('');
+	const [name, setName] = useState("");
+	const [password, setPassword] = useState("");
+	const [nameErr, setNameErr] = useState("");
+	const [passErr, setPassErr] = useState("");
+	const [selectedGender, setSelectedGender] = useState("");
 
 	const navigate = useNavigate();
 
 	const handleGenderChange = (event) => {
 		setSelectedGender(event.target.value);
-	}
+	};
 
 	async function user() {
-			const res = await fetch(
-				`https://voteable-backend.onrender.com/v1/user`,
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						Student_ID: name,
-						password: password,
-					}),
-				}
-			);
-		const data = await res.json()
+		const res = await fetch(
+			`https://voteable-backend.onrender.com/v1/user`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					Student_ID: name,
+					password: password,
+				}),
+			}
+		);
+		const data = await res.json();
 
-			if (data.error == 'Invalid password') {
-				setPassErr(data.error)
-				return
+		if (data.error == "Invalid password") {
+			setPassErr(data.error);
+			return;
 		}
 
-		if (data.error == 'Invalid student ID, please try again') {
-			setNameErr(data.error)
-			return
+		if (data.error == "Invalid student ID, please try again") {
+			setNameErr(data.error);
+			return;
 		}
-		return data
-		}
+		return data;
+	}
 
 	const login = async () => {
-		if (
-			!name ||
-			!password ||
-			!selectedGender
-		) {
-			return
+		if (!name || !password || !selectedGender) {
+			return;
 		}
 
-		const data2 = await user()
+		const data2 = await user();
 
 		if (data2.error) {
-			return
+			return;
 		}
 
-		localStorage.setItem('Student_ID', name);
-		localStorage.setItem('name', `${data2.name}`);
-		localStorage.setItem('password', password);
-		localStorage.setItem('gender', selectedGender);
+		localStorage.setItem("Student_ID", name);
+		localStorage.setItem("name", `${data2.name}`);
+		localStorage.setItem("password", password);
+		localStorage.setItem("gender", selectedGender);
 
 		if (!nameErr || !passErr) {
-			navigate('/polls');
-	}
+			navigate("/polls");
+		}
 	};
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 	}, []);
 
 	return (
 		<div className="joinOuterContainer">
 			<Header />
-			<div className="joinInnerContainer" style={{ marginTop: '200px' }}>
+			<div className="joinInnerContainer" style={{ marginTop: "200px" }}>
 				<img src={avatarPic} className="avPic" alt="VoteAble" />
 				<h1 className="heading">Login</h1>
 				<div>
 					<input
 						name="name"
-						style={{ fontSize: '17px' }}
+						style={{ fontSize: "17px" }}
 						value={name}
 						placeholder="Student ID"
 						className="joinInput"
 						type="text"
 						onChange={(event) => {
 							setName(event.target.value);
-							setNameErr('');
+							setNameErr("");
 						}}
 						onBlur={() => {
-							if (!name) setNameErr('Please enter a valid name');
+							if (!name) setNameErr("Please enter a valid name");
 						}}
 					/>
 					{nameErr && <p className="namep">{nameErr}</p>}
 				</div>
 				<div>
 					<input
-						style={{ fontSize: '17px' }}
+						style={{ fontSize: "17px" }}
 						name="password"
 						placeholder="Password"
 						value={password}
@@ -111,20 +108,21 @@ export default function Login() {
 						type="password"
 						onChange={(event) => {
 							setPassword(event.target.value);
-							setPassErr('');
+							setPassErr("");
 						}}
 						onBlur={() => {
-							if (!password) setPassErr('Please enter a valid password');
+							if (!password)
+								setPassErr("Please enter a valid password");
 						}}
 					/>
 					{passErr && <p className="passp">{passErr}</p>}
 				</div>
 				<div
 					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						marginTop: '15px',
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						marginTop: "15px",
 					}}
 				>
 					{/* <label htmlFor="classDropdown" style={{ marginBottom: '5px', fontSize: '16px' }}>Class:</label> */}
@@ -173,19 +171,19 @@ export default function Login() {
 					</select> */}
 					<form
 						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							marginTop: '15px',
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							marginTop: "15px",
 						}}
 					>
-						<label style={{ marginRight: '20px' }}>
+						<label style={{ marginRight: "20px" }}>
 							<input
 								type="radio"
 								value="male"
-								checked={selectedGender === 'male'}
+								checked={selectedGender === "male"}
 								onChange={handleGenderChange}
-								style={{ accentColor: '#4600b6' }}
+								style={{ accentColor: "#4600b6" }}
 							/>
 							Male
 						</label>
@@ -193,22 +191,21 @@ export default function Login() {
 							<input
 								type="radio"
 								value="female"
-								checked={selectedGender === 'female'}
+								checked={selectedGender === "female"}
 								onChange={handleGenderChange}
-								style={{ accentColor: '#4600b6' }}
+								style={{ accentColor: "#4600b6" }}
 							/>
 							Female
 						</label>
 					</form>
 				</div>
 				<button
-					className={'button mt-20'}
+					className={"button mt-20"}
 					onClick={login}
-					style={{ padding: '5px' }}
+					style={{ padding: "5px" }}
 				>
-					<p style={{ fontSize: '17px' }}>Login</p>
+					<p style={{ fontSize: "17px" }}>Login</p>
 				</button>
-				
 			</div>
 		</div>
 	);

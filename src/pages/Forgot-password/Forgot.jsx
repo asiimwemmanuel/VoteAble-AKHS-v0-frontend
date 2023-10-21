@@ -1,19 +1,19 @@
-import { CircularProgress } from '@mui/material';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../../components/Header/Header.jsx';
+import { CircularProgress } from "@mui/material";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "../../components/Header/Header.jsx";
 // import ScrollToTop from "react-scroll-to-top";
 
-import { useEffect } from 'react';
-import './Forgot.css';
+import { useEffect } from "react";
+import "./Forgot.css";
 
 export default function Forgot() {
-	const [email, setEmail] = useState('');
-	const [name, setName] = useState('');
-	const [emailErr, setEmailErr] = useState('');
-	const [nameErr, setNameErr] = useState('');
-	const [heading, setHeading] = useState('Forgot password');
-	const [emM, setEmM] = useState('');
+	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
+	const [emailErr, setEmailErr] = useState("");
+	const [nameErr, setNameErr] = useState("");
+	const [heading, setHeading] = useState("Forgot password");
+	const [emM, setEmM] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
 	let namep = <p className="namep">Please enter a valid user name</p>;
@@ -26,23 +26,23 @@ export default function Forgot() {
 		if (name && email) {
 			setIsLoading(true);
 			const res = await fetch(
-				'https://voteable-backend.onrender.com/v1/forgot-password',
+				"https://voteable-backend.onrender.com/v1/forgot-password",
 				{
-					method: 'POST',
-					credentials: 'include',
+					method: "POST",
+					credentials: "include",
 					body: JSON.stringify({
 						name: name,
 						email: email,
 					}),
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 					},
 				}
 			);
 
 			const data = await res.json();
 			console.log(data);
-			if (data.error === 'You must be signed out to access this route') {
+			if (data.error === "You must be signed out to access this route") {
 				setEmailErr(signedInP);
 			}
 			setIsLoading(false);
@@ -50,15 +50,15 @@ export default function Forgot() {
 				data.time
 			).toLocaleTimeString()}`;
 
-			if (data.message === 'Email successfully sent') {
-				setHeading('Email successfully sent');
+			if (data.message === "Email successfully sent") {
+				setHeading("Email successfully sent");
 				setEmM(emailsM);
 			}
-			if (data.error === 'Enter your exact username here') {
+			if (data.error === "Enter your exact username here") {
 				setEmailErr(emailp3);
 				console.log(data.error);
 				setTimeout(() => {
-					setEmailErr('');
+					setEmailErr("");
 				}, 10000);
 			}
 		}
@@ -69,24 +69,24 @@ export default function Forgot() {
 		if (!email) {
 			setEmailErr(emailp);
 		}
-		if (!email.includes('@') && !email.includes('.com')) {
+		if (!email.includes("@") && !email.includes(".com")) {
 			setEmailErr(emailp2);
 		}
 	};
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 	}, []);
 	return (
 		<div className="joinOuterContainer">
 			<Header />
-			<div className="joinInnerContainer" style={{ marginTop: '20%' }}>
+			<div className="joinInnerContainer" style={{ marginTop: "20%" }}>
 				{isLoading ? (
 					<CircularProgress
 						style={{
-							color: '#4600b6',
-							paddingTop: '20px',
-							marginTop: '25px',
+							color: "#4600b6",
+							paddingTop: "20px",
+							marginTop: "25px",
 						}}
 					/>
 				) : (
@@ -103,7 +103,7 @@ export default function Forgot() {
 						className="joinInput"
 						type="text"
 						onChange={(event) => {
-							setNameErr('');
+							setNameErr("");
 							setName(event.target.value);
 						}}
 						onBlur={() => {
@@ -122,7 +122,7 @@ export default function Forgot() {
 						className="joinInput"
 						type="email"
 						onChange={(event) => {
-							setEmailErr('');
+							setEmailErr("");
 							setEmail(event.target.value);
 						}}
 						onBlur={() => {

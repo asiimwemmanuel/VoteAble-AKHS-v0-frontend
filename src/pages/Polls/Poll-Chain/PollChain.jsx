@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../../components/Header/Header.jsx';
-import './PollChain.css';
+import React, { useEffect, useState } from "react";
+import Header from "../../../components/Header/Header.jsx";
+import "./PollChain.css";
 // import { CircularProgress } from '@mui/material';
-import Menuu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Modal from '@mui/material/Modal';
-import QRCode from 'react-qr-code';
-import { Link, useParams } from 'react-router-dom';
-import { RWebShare } from 'react-web-share';
+import Menuu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
+import QRCode from "react-qr-code";
+import { Link, useParams } from "react-router-dom";
+import { RWebShare } from "react-web-share";
 
 function PollChain() {
 	// eslint-disable-next-line
@@ -17,7 +17,7 @@ function PollChain() {
 	const [polls, setPolls] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [name, setName] = useState('');
+	const [name, setName] = useState("");
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -31,14 +31,14 @@ function PollChain() {
 	const handleCloseModal = () => setOpenModal(false);
 	const params = useParams();
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 		const myPolls = async () => {
 			setIsLoading(true);
 			const res = await fetch(
 				`https://voteable-backend.onrender.com/v1/poll-chain-polls/${params.id}`,
 				{
-					method: 'GET',
-					credentials: 'include',
+					method: "GET",
+					credentials: "include",
 				}
 			);
 			const data = await res.json();
@@ -53,13 +53,13 @@ function PollChain() {
 			}
 			console.log(data);
 
-			if (data.error === 'You have to login / signup first') {
-				setSignupFirstErr('You have to login first');
-				return
+			if (data.error === "You have to login / signup first") {
+				setSignupFirstErr("You have to login first");
+				return;
 			}
-			if (data.error === 'No polls found') {
+			if (data.error === "No polls found") {
 				setNoPollsFound(true);
-				return
+				return;
 			}
 		};
 		myPolls();
@@ -79,219 +79,235 @@ function PollChain() {
 					//	 }}
 					// />
 					<div
-						style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							flexWrap: "wrap",
+						}}
 					>
-						<div className="pollc" style={{ background: '#d8d8d8' }}>
+						<div
+							className="pollc"
+							style={{ background: "#d8d8d8" }}
+						>
 							<div
 								style={{
-									height: '80px',
-									width: '90%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '25px',
-									borderRadius: '15px',
+									height: "80px",
+									width: "90%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "25px",
+									borderRadius: "15px",
 								}}
 							></div>
 							<div
 								style={{
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '30%',
-									borderRadius: '10px',
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "30%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'absolute',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '80%',
-									borderRadius: '10px',
+									position: "absolute",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "80%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '65%',
-									borderRadius: '10px',
-									marginLeft: '-120px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "65%",
+									borderRadius: "10px",
+									marginLeft: "-120px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '87%',
-									borderRadius: '10px',
-									marginLeft: '-130px',
-								}}
-							></div>
-						</div>
-						<div className="pollc" style={{ background: '#d8d8d8' }}>
-							<div
-								style={{
-									height: '80px',
-									width: '90%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '25px',
-									borderRadius: '15px',
-								}}
-							></div>
-							<div
-								style={{
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '30%',
-									borderRadius: '10px',
-								}}
-							></div>
-							<div
-								style={{
-									position: 'absolute',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '80%',
-									borderRadius: '10px',
-								}}
-							></div>
-							<div
-								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '65%',
-									borderRadius: '10px',
-									marginLeft: '-120px',
-								}}
-							></div>
-							<div
-								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '87%',
-									borderRadius: '10px',
-									marginLeft: '-130px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "87%",
+									borderRadius: "10px",
+									marginLeft: "-130px",
 								}}
 							></div>
 						</div>
-						<div className="pollc" style={{ background: '#d8d8d8' }}>
+						<div
+							className="pollc"
+							style={{ background: "#d8d8d8" }}
+						>
 							<div
 								style={{
-									height: '80px',
-									width: '90%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '25px',
-									borderRadius: '15px',
+									height: "80px",
+									width: "90%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "25px",
+									borderRadius: "15px",
 								}}
 							></div>
 							<div
 								style={{
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '30%',
-									borderRadius: '10px',
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "30%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'absolute',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '80%',
-									borderRadius: '10px',
+									position: "absolute",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "80%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '65%',
-									borderRadius: '10px',
-									marginLeft: '-120px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "65%",
+									borderRadius: "10px",
+									marginLeft: "-120px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '87%',
-									borderRadius: '10px',
-									marginLeft: '-130px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "87%",
+									borderRadius: "10px",
+									marginLeft: "-130px",
 								}}
 							></div>
 						</div>
-						<div className="pollc" style={{ background: '#d8d8d8' }}>
+						<div
+							className="pollc"
+							style={{ background: "#d8d8d8" }}
+						>
 							<div
 								style={{
-									height: '80px',
-									width: '90%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '25px',
-									borderRadius: '15px',
+									height: "80px",
+									width: "90%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "25px",
+									borderRadius: "15px",
 								}}
 							></div>
 							<div
 								style={{
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '30%',
-									borderRadius: '10px',
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "30%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'absolute',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '80%',
-									borderRadius: '10px',
+									position: "absolute",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "80%",
+									borderRadius: "10px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '65%',
-									borderRadius: '10px',
-									marginLeft: '-120px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "65%",
+									borderRadius: "10px",
+									marginLeft: "-120px",
 								}}
 							></div>
 							<div
 								style={{
-									position: 'relative',
-									height: '40px',
-									width: '34%',
-									backgroundColor: '#a5a4a4',
-									marginTop: '87%',
-									borderRadius: '10px',
-									marginLeft: '-130px',
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "87%",
+									borderRadius: "10px",
+									marginLeft: "-130px",
+								}}
+							></div>
+						</div>
+						<div
+							className="pollc"
+							style={{ background: "#d8d8d8" }}
+						>
+							<div
+								style={{
+									height: "80px",
+									width: "90%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "25px",
+									borderRadius: "15px",
+								}}
+							></div>
+							<div
+								style={{
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "30%",
+									borderRadius: "10px",
+								}}
+							></div>
+							<div
+								style={{
+									position: "absolute",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "80%",
+									borderRadius: "10px",
+								}}
+							></div>
+							<div
+								style={{
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "65%",
+									borderRadius: "10px",
+									marginLeft: "-120px",
+								}}
+							></div>
+							<div
+								style={{
+									position: "relative",
+									height: "40px",
+									width: "34%",
+									backgroundColor: "#a5a4a4",
+									marginTop: "87%",
+									borderRadius: "10px",
+									marginLeft: "-130px",
 								}}
 							></div>
 						</div>
 					</div>
 				) : (
-					''
+					""
 				)}
 				{polls && !isLoading
 					? polls.map((poll) => {
@@ -302,9 +318,11 @@ function PollChain() {
 									</div>
 									<Link
 										to={`/poll/${poll._id}`}
-										style={{ textDecoration: 'none' }}
+										style={{ textDecoration: "none" }}
 									>
-										<button className="Btn">View Poll</button>
+										<button className="Btn">
+											View Poll
+										</button>
 									</Link>
 									<button
 										className="dBtn"
@@ -312,13 +330,16 @@ function PollChain() {
 											const res = await fetch(
 												`https://voteable-backend.onrender.com/v1/delete-poll/${poll._id}`,
 												{
-													method: 'DELETE',
-													credentials: 'include',
+													method: "DELETE",
+													credentials: "include",
 												}
 											);
 											const data = await res.json();
-											if (data.message === 'Poll successfully deleted') {
-												alert('Poll deleted');
+											if (
+												data.message ===
+												"Poll successfully deleted"
+											) {
+												alert("Poll deleted");
 												window.location.reload();
 											}
 										}}
@@ -328,16 +349,22 @@ function PollChain() {
 									<div>
 										<Link
 											to={`/voted-users/${poll._id}`}
-											style={{ textDecoration: 'none' }}
+											style={{ textDecoration: "none" }}
 										>
-											<button className="Btn2">Voted Users</button>
+											<button className="Btn2">
+												Voted Users
+											</button>
 										</Link>
 										<button
 											className="Btn2"
-											style={{ marginLeft: '57%' }}
-											aria-controls={open ? 'basic-menu' : undefined}
+											style={{ marginLeft: "57%" }}
+											aria-controls={
+												open ? "basic-menu" : undefined
+											}
 											aria-haspopup="true"
-											aria-expanded={open ? 'true' : undefined}
+											aria-expanded={
+												open ? "true" : undefined
+											}
 											onClick={handleClick}
 										>
 											Share Poll
@@ -348,7 +375,8 @@ function PollChain() {
 											open={open}
 											onClose={handleClose}
 											MenuListProps={{
-												'aria-labelledby': 'basic-button',
+												"aria-labelledby":
+													"basic-button",
 											}}
 										>
 											{/* <MenuItem onClick={handleClose}> */}
@@ -358,7 +386,11 @@ function PollChain() {
 													url: `http://localhost:3000/poll/${poll._id}`,
 													title: `VoteAble Poll - ${poll.question}`,
 												}}
-												onClick={() => console.log('shared successfully!')}
+												onClick={() =>
+													console.log(
+														"shared successfully!"
+													)
+												}
 											>
 												<MenuItem
 													onClick={() => {
@@ -385,20 +417,23 @@ function PollChain() {
 										onClose={handleCloseModal}
 										aria-labelledby="modal-modal-title"
 										aria-describedby="modal-modal-description"
-										style={{ marginTop: '50px', marginLeft: '1%' }}
+										style={{
+											marginTop: "50px",
+											marginLeft: "1%",
+										}}
 									>
 										<div className="pollc">
-											{' '}
+											{" "}
 											<QRCode
 												value={`http://192.168.3.21:3000/poll/${poll._id}`}
-												style={{ marginTop: '25px' }}
+												style={{ marginTop: "25px" }}
 											/>
 										</div>
 									</Modal>
 								</div>
 							);
-						})
-					: ''}
+					  })
+					: ""}
 				{!polls && !isLoading ? (
 					<div className="pollc">
 						<h1>No polls found</h1>
@@ -407,7 +442,7 @@ function PollChain() {
 						</Link>
 					</div>
 				) : (
-					''
+					""
 				)}
 			</div>
 		</div>

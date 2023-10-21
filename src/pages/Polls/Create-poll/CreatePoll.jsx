@@ -1,36 +1,36 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
-import Header from '../../../components/Header/Header.jsx';
-import './CreatePoll.css';
+// import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import Header from "../../../components/Header/Header.jsx";
+import "./CreatePoll.css";
 
 function CreatePoll() {
 	const [options, setOptions] = useState([]);
 	const [questionErr, setQuestionErr] = useState(null);
 	const [optionErr, setOptionErr] = useState(null);
-	const [question, setQuestion] = useState('');
+	const [question, setQuestion] = useState("");
 	const [formClosed, setFormClosed] = useState(false);
-	const [option, setOption] = useState('');
+	const [option, setOption] = useState("");
 	const [fileErr, setFileErr] = useState(null);
 	const [image, setImage] = useState(null);
 	const [images, setImages] = useState([]);
-	const [selectedClass, setSelectedClass] = useState('');
-	const [selectedHouse, setSelectedHouse] = useState('');
+	const [selectedClass, setSelectedClass] = useState("");
+	const [selectedHouse, setSelectedHouse] = useState("");
 	const handleClassChange = (event) => {
 		setSelectedClass(event.target.value);
-		if (selectedClass) setOptionErr('');
+		if (selectedClass) setOptionErr("");
 	};
 	const handleHouseChange = (event) => {
 		setSelectedHouse(event.target.value);
-		if (selectedHouse) setOptionErr('');
+		if (selectedHouse) setOptionErr("");
 	};
 	const inputRef = useRef();
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 	}, []);
 
 	const handleQuestionChange = (e) => {
@@ -45,12 +45,12 @@ function CreatePoll() {
 
 	const handleImageChange = (e) => {
 		const selectedImage = e.target.files[0];
-		if (selectedImage && selectedImage.type.includes('image/')) {
+		if (selectedImage && selectedImage.type.includes("image/")) {
 			setImage(selectedImage);
 			setFileErr(null);
 		} else {
 			setImage(null);
-			setFileErr('Please upload an image!');
+			setFileErr("Please upload an image!");
 		}
 	};
 
@@ -59,21 +59,21 @@ function CreatePoll() {
 		if (question) {
 			setFormClosed(true);
 		} else {
-			setQuestionErr('Enter a question');
+			setQuestionErr("Enter a question");
 		}
 	};
 
 	const handleAddOption = (e) => {
 		e.preventDefault();
 		if (!option) {
-			setOptionErr('Enter an option');
+			setOptionErr("Enter an option");
 			return;
 		}
 
 		const updatedOptions = [...options];
 		updatedOptions.push({ option, image });
 		setOptions(updatedOptions);
-		setOption('');
+		setOption("");
 
 		if (image) {
 			const updatedImages = [...images];
@@ -84,7 +84,7 @@ function CreatePoll() {
 		}
 
 		if (updatedOptions.length < 2) {
-			setOptionErr('Enter another option');
+			setOptionErr("Enter another option");
 		}
 	};
 
@@ -99,19 +99,19 @@ function CreatePoll() {
 
 		try {
 			const res = await fetch(
-				'https://voteable-backend.onrender.com/v1/create-poll',
+				"https://voteable-backend.onrender.com/v1/create-poll",
 				{
-					method: 'POST',
+					method: "POST",
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
 						question: question,
 						options: finalOptions,
 						owner: {
-							name: localStorage.getItem('name'),
-							password: localStorage.getItem('password'),
-							gender: localStorage.getItem('gender'),
+							name: localStorage.getItem("name"),
+							password: localStorage.getItem("password"),
+							gender: localStorage.getItem("gender"),
 						},
 						class: selectedClass,
 						house: selectedHouse,
@@ -120,28 +120,30 @@ function CreatePoll() {
 			);
 
 			if (res.ok) {
-				navigate('/polls');
+				navigate("/polls");
 			}
 
 			const data = res.data;
 
-			if (data.error === 'You have to login / signup to create a poll') {
-				setOptionErr('You have to login to create a poll');
-				return
+			if (data.error === "You have to login / signup to create a poll") {
+				setOptionErr("You have to login to create a poll");
+				return;
 			}
 		} catch (error) {
-			console.error('Error creating poll:', error);
+			console.error("Error creating poll:", error);
 		}
 	};
 
 	return (
 		<div
 			className="joinOuterContainer"
-			style={{ backgroundImage: 'linear-gradient(180deg,#17005c, #4600b6)' }}
+			style={{
+				backgroundImage: "linear-gradient(180deg,#17005c, #4600b6)",
+			}}
 		>
 			<Header />
-			<div className="form" style={{ marginTop: '10%' }}>
-				<h1 style={{ marginBottom: '5px' }}>Create Poll</h1>
+			<div className="form" style={{ marginTop: "10%" }}>
+				<h1 style={{ marginBottom: "5px" }}>Create Poll</h1>
 				<h2>{question}</h2>
 				{!formClosed ? (
 					<form onSubmit={handleUseQuestion}>
@@ -150,11 +152,11 @@ function CreatePoll() {
 							placeholder="Question"
 							className="qInput"
 							value={question}
-							style={{ fontSize: '17px' }}
+							style={{ fontSize: "17px" }}
 							onChange={handleQuestionChange}
 							onBlur={() => {
 								if (!question) {
-									setQuestionErr('Enter a question');
+									setQuestionErr("Enter a question");
 								}
 							}}
 						/>
@@ -169,33 +171,37 @@ function CreatePoll() {
 								<div
 									key={index}
 									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										justifyContent: 'flex-start',
-										alignItems: 'center',
-										marginBottom: '15px',
+										display: "flex",
+										flexDirection: "row",
+										justifyContent: "flex-start",
+										alignItems: "center",
+										marginBottom: "15px",
 									}}
 								>
 									{option.image && (
 										<img
 											className="optionImg"
-											src={URL.createObjectURL(option.image)}
+											src={URL.createObjectURL(
+												option.image
+											)}
 											alt="Option Image"
 										/>
 									)}
-									<li style={{ marginLeft: '25px' }}>{option.option}</li>
+									<li style={{ marginLeft: "25px" }}>
+										{option.option}
+									</li>
 								</div>
 							))}
 						</ol>
 						<input
 							type="text"
 							placeholder="Option"
-							style={{ fontSize: '17px' }}
+							style={{ fontSize: "17px" }}
 							className="qInput"
 							value={option}
 							onBlur={() => {
 								if (!option && options.length < 2) {
-									setOptionErr('Enter an option');
+									setOptionErr("Enter an option");
 								}
 							}}
 							onChange={handleOptionChange}
@@ -220,11 +226,11 @@ function CreatePoll() {
 							onChange={handleClassChange}
 							className="joinInput mt-10"
 							style={{
-								padding: '8px',
-								border: '1px solid #ccc',
-								borderRadius: '4px',
-								fontSize: '16px',
-								width: '100%',
+								padding: "8px",
+								border: "1px solid #ccc",
+								borderRadius: "4px",
+								fontSize: "16px",
+								width: "100%",
 							}}
 						>
 							<option value="">Select a class</option>
@@ -243,11 +249,11 @@ function CreatePoll() {
 							onChange={handleHouseChange}
 							className="joinInput"
 							style={{
-								padding: '8px',
-								border: '1px solid #ccc',
-								borderRadius: '4px',
-								fontSize: '16px',
-								width: '100%',
+								padding: "8px",
+								border: "1px solid #ccc",
+								borderRadius: "4px",
+								fontSize: "16px",
+								width: "100%",
 							}}
 						>
 							<option value="">Select a house</option>
@@ -261,28 +267,30 @@ function CreatePoll() {
 				) : null}
 				<div
 					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						marginTop: '15px',
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						marginTop: "15px",
 					}}
 				></div>
 				<button
 					className="button mt-20"
 					onClick={() => {
 						if (!question) {
-							setQuestionErr('Enter a question');
+							setQuestionErr("Enter a question");
 						}
 						if (!option && options.length > 0) {
-							setOptionErr('');
+							setOptionErr("");
 						}
 
 						if (options.length < 2) {
-							setOptionErr('You need to add more than 1 option');
+							setOptionErr("You need to add more than 1 option");
 						}
 
-						if (!selectedClass) setOptionErr('Please select a class');
-						if (!selectedHouse) setOptionErr('Please select a house');
+						if (!selectedClass)
+							setOptionErr("Please select a class");
+						if (!selectedHouse)
+							setOptionErr("Please select a house");
 
 						createPoll();
 					}}

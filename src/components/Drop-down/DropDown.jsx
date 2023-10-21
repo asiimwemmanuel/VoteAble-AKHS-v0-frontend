@@ -1,11 +1,11 @@
 // import Menuu from '@mui/material/Menu';
 // import MenuItem from '@mui/material/MenuItem';
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import Context from '../../Context/Context.jsx';
-import avatarPic from '../../assets/VoteAble logo.png';
-import avatarImg from '../../assets/avatarIcon.jpeg';
-import './DropDown.css';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import Context from "../../Context/Context.jsx";
+import avatarPic from "../../assets/VoteAble logo.png";
+import avatarImg from "../../assets/avatarIcon.jpeg";
+import "./DropDown.css";
 
 function DropDown(props) {
 	const ctx = useContext(Context);
@@ -28,12 +28,12 @@ function DropDown(props) {
 		setBanchorEl(null);
 	};
 	const logout = async () => {
-		localStorage.removeItem('name');
-		localStorage.removeItem('gender');
-		localStorage.removeItem('Student_ID');
-		localStorage.removeItem('password');
-		localStorage.removeItem('class');
-		localStorage.removeItem('house');
+		localStorage.removeItem("name");
+		localStorage.removeItem("gender");
+		localStorage.removeItem("Student_ID");
+		localStorage.removeItem("password");
+		localStorage.removeItem("class");
+		localStorage.removeItem("house");
 
 		window.location.reload();
 	};
@@ -47,7 +47,7 @@ function DropDown(props) {
 				}}
 			></div>
 			<div className="dropdown">
-				<NavLink to="/home" style={{ marginTop: '15px' }}>
+				<NavLink to="/home" style={{ marginTop: "15px" }}>
 					<img
 						src={avatarPic}
 						alt="header"
@@ -57,34 +57,38 @@ function DropDown(props) {
 						}}
 					/>
 				</NavLink>
-				{localStorage.getItem('name') ? (
+				{localStorage.getItem("name") ? (
 					<div
 						className="profile-tab-btn"
 						title="see-profile"
-						style={{ padding: '10px' }}
+						style={{ padding: "10px" }}
 					>
-						<img src={avatarImg} alt="avatarImg" className="avatarImg" />
+						<img
+							src={avatarImg}
+							alt="avatarImg"
+							className="avatarImg"
+						/>
 						<p
 							className="h5"
 							style={{
-								margin: '10px',
-								whiteSpace: 'nowrap',
-								overflow: 'hidden',
-								textOverflow: 'ellipsis',
-								maxWidth: '175px',
+								margin: "10px",
+								whiteSpace: "nowrap",
+								overflow: "hidden",
+								textOverflow: "ellipsis",
+								maxWidth: "175px",
 							}}
 						>
-							{localStorage.getItem('name')}
+							{localStorage.getItem("name")}
 						</p>
 					</div>
 				) : (
-					''
+					""
 				)}
-				{!localStorage.getItem('name') ? (
+				{!localStorage.getItem("name") ? (
 					<NavLink to="/login">
 						<button
 							className="btnn"
-							style={{ fontSize: '16.5px' }}
+							style={{ fontSize: "16.5px" }}
 							onClick={() => {
 								ctx.setIsDropVal(false);
 							}}
@@ -93,9 +97,9 @@ function DropDown(props) {
 						</button>
 					</NavLink>
 				) : (
-					''
+					""
 				)}
-				{localStorage.getItem('name') ? (
+				{localStorage.getItem("name") ? (
 					<div>
 						{/* <button
 							className="btnn"
@@ -107,17 +111,21 @@ function DropDown(props) {
 						>
 							Poll Hub
 						</button> */}
-							<NavLink
+						<NavLink
 							to="/polls"
-							className='btnn'
-								style={{ textDecoration: 'none', color: 'black', textAlign:'center' }}
-								onClick={() => {
-									ctx.setIsDropVal(false);
-								}}
+							className="btnn"
+							style={{
+								textDecoration: "none",
+								color: "black",
+								textAlign: "center",
+							}}
+							onClick={() => {
+								ctx.setIsDropVal(false);
+							}}
 						>
 							Poll Hub
-							</NavLink>
-							{/* <NavLink
+						</NavLink>
+						{/* <NavLink
 								to="/my-poll-chains"
 								style={{ textDecoration: 'none', color: 'black' }}
 								onClick={() => {
@@ -126,10 +134,9 @@ function DropDown(props) {
 							>
 								<MenuItem>Poll Chains</MenuItem>
 							</NavLink> */}
-						
 					</div>
 				) : (
-					''
+					""
 				)}
 
 				{/* <form action='https://voteable-backend.onrender.com/v1/create-checkout-session' method="POST">
@@ -178,16 +185,16 @@ function DropDown(props) {
 							</NavLink >
 						</Menuu>
 					</div> : ''} */}
-				{localStorage.getItem('name') ? (
+				{localStorage.getItem("name") ? (
 					<button
 						className="btnn"
-						style={{ fontSize: '16.5px' }}
+						style={{ fontSize: "16.5px" }}
 						onClick={logout}
 					>
 						Logout
 					</button>
 				) : (
-					''
+					""
 				)}
 			</div>
 		</div>

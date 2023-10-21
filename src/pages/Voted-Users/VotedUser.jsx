@@ -1,18 +1,18 @@
-import { CircularProgress } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import readXlsxFile from 'read-excel-file';
-import { v4 as uuidv4 } from 'uuid';
-import Header from '../../components/Header/Header.jsx';
+import { CircularProgress } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import readXlsxFile from "read-excel-file";
+import { v4 as uuidv4 } from "uuid";
+import Header from "../../components/Header/Header.jsx";
 
 // import DropDown from '../../components/Drop-down/DropDown.jsx';
-import './VotedUser.css';
+import "./VotedUser.css";
 
 function VotedUser() {
 	const id = uuidv4();
 	const { pollId } = useParams();
 	const [selectedFile, setSelectedFile] = useState();
-	const [question, setQuestion] = useState('');
+	const [question, setQuestion] = useState("");
 	const [isData, setData] = useState([]);
 	const [err, setErr] = useState();
 	const [isLoading, setIsLoading] = useState(true);
@@ -21,13 +21,13 @@ function VotedUser() {
 	const [submit, setSubmited] = useState(false);
 
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
 		async function votedUsers(param) {
 			const res = await fetch(
 				`https://voteable-backend.onrender.com/v1/voted-users/${param}`,
 				{
-					method: 'GET',
+					method: "GET",
 				}
 			);
 
@@ -37,7 +37,7 @@ function VotedUser() {
 
 			if (data.error) {
 				setErr(data.error);
-				return
+				return;
 			}
 			setIsLoading(false);
 		}
@@ -51,7 +51,7 @@ function VotedUser() {
 			const res = await fetch(
 				`https://voteable-backend.onrender.com/v1/poll/${pollId}`,
 				{
-					method: 'GET',
+					method: "GET",
 				}
 			);
 			const data = await res.json();
@@ -62,12 +62,12 @@ function VotedUser() {
 	}, []);
 
 	return (
-		<div className="joinOuterContainer" style={{ flexDirection: 'row' }}>
+		<div className="joinOuterContainer" style={{ flexDirection: "row" }}>
 			<Header />
 			{isLoading ? (
 				<CircularProgress
 					style={{
-						color: 'white',
+						color: "white",
 						// position: "absolute",
 						// top: "20%",
 						// left: "40%",
@@ -78,10 +78,10 @@ function VotedUser() {
 					<h1>Voted Users</h1>
 					<h3>{err}</h3>
 					{isData.length !== 0 ? (
-						<ol type='1' className="ulvuc">
+						<ol type="1" className="ulvuc">
 							{isData.map((option) => {
 								return (
-									<li key={id} style={{ margin: '15px' }}>
+									<li key={id} style={{ margin: "15px" }}>
 										{option}
 									</li>
 								);
@@ -105,8 +105,14 @@ function VotedUser() {
 										.slice(1)
 										.map((val) => val[0])
 										.sort();
-									const dbData = isData.map((val) => val.name).sort();
-									console.log(dbData, res, res.slice(dbData.length));
+									const dbData = isData
+										.map((val) => val.name)
+										.sort();
+									console.log(
+										dbData,
+										res,
+										res.slice(dbData.length)
+									);
 									const result = [];
 									const illegalvotersArray = [];
 
@@ -123,12 +129,15 @@ function VotedUser() {
 									}
 									setNotVoted(result);
 									setUnauthorisedVoters(illegalvotersArray);
-									console.log(illegalvotersArray, unauthorisedVoters);
+									console.log(
+										illegalvotersArray,
+										unauthorisedVoters
+									);
 									setSubmited(true);
 								});
 							}}
 							className="btnn"
-							style={{ marginTop: '20px', fontSize: '17px' }}
+							style={{ marginTop: "20px", fontSize: "17px" }}
 						>
 							Submit
 						</button>
@@ -138,63 +147,63 @@ function VotedUser() {
 			)}
 			{notVoted.length > 0 && selectedFile ? (
 				<div
-					style={{ background: 'white', borderRadius: '20px' }}
+					style={{ background: "white", borderRadius: "20px" }}
 					className="vuc"
 				>
 					<h2>Users that have not voted</h2>
 					<ul className="ulvuc">
 						{notVoted.map((val) => {
-							return <li style={{ margin: '15px' }}>{val}</li>;
+							return <li style={{ margin: "15px" }}>{val}</li>;
 						})}
 					</ul>
 				</div>
 			) : (
-				''
+				""
 			)}
 			{unauthorisedVoters.length > 0 && selectedFile ? (
 				<div
-					style={{ background: 'white', borderRadius: '20px' }}
+					style={{ background: "white", borderRadius: "20px" }}
 					className="vuc"
 				>
 					<h2>Unauthorised voters</h2>
 					<ul className="ulvuc">
 						{unauthorisedVoters.map((val) => {
-							return <li style={{ margin: '15px' }}>{val}</li>;
+							return <li style={{ margin: "15px" }}>{val}</li>;
 						})}
 					</ul>
 				</div>
 			) : (
-				''
+				""
 			)}
 			{unauthorisedVoters.length === 0 && submit && selectedFile ? (
 				<div
 					style={{
-						background: 'white',
-						borderRadius: '20px',
-						height: '150px',
-						padding: '10px',
+						background: "white",
+						borderRadius: "20px",
+						height: "150px",
+						padding: "10px",
 					}}
 					className="vuc"
 				>
 					<h2>No unauthorised voters</h2>
 				</div>
 			) : (
-				''
+				""
 			)}
 			{notVoted.length === 0 && submit && selectedFile ? (
 				<div
 					style={{
-						background: 'white',
-						borderRadius: '20px',
-						height: '150px',
-						padding: '10px',
+						background: "white",
+						borderRadius: "20px",
+						height: "150px",
+						padding: "10px",
 					}}
 					className="vuc"
 				>
 					<h2>All registered users have voted</h2>
 				</div>
 			) : (
-				''
+				""
 			)}
 		</div>
 	);

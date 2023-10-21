@@ -2,10 +2,10 @@ import { createContext } from "react";
 
 const Context = createContext({
 	isDrop: false,
-	setIsDropVal: () => { },
+	setIsDropVal: () => {},
 	message: null,
-	setMessageValFunc: () => { },
-	currentYear: new Date().getFullYear()
+	setMessageValFunc: () => {},
+	currentYear: new Date().getFullYear(),
 });
 
 export default Context;

@@ -1,6 +1,6 @@
 // PollCarousel.js
-import React, { useState } from 'react';
-import Poll from '../../components/Poll_Carousel.js';
+import React, { useState } from "react";
+import Poll from "../../components/Poll_Carousel.js";
 
 function PollCarousel({ polls }) {
 	const [currentPollIndex, setCurrentPollIndex] = useState(0);

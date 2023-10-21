@@ -1,29 +1,29 @@
-import React, { useEffect } from 'react';
-import Img from '../../assets/VoteAble-header-image-2.png';
-import Header from '../../components/Header/Header.jsx';
-import './Subscription.css';
+import React, { useEffect } from "react";
+import Img from "../../assets/VoteAble-header-image-2.png";
+import Header from "../../components/Header/Header.jsx";
+import "./Subscription.css";
 
 function Subscription() {
 	useEffect(() => {
-		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 	}, []);
 
 	return (
-		<div className="FlexBG" style={{ justifyContent: 'center' }}>
+		<div className="FlexBG" style={{ justifyContent: "center" }}>
 			<Header />
 			<div className="subCard">
 				<img
 					src={Img}
 					style={{
-						height: '20%',
-						position: 'relative',
-						left: '1px',
-						marginTop: '0px',
+						height: "20%",
+						position: "relative",
+						left: "1px",
+						marginTop: "0px",
 					}}
 					alt="VoteaBLE Img"
 				/>
 				<h1>Free</h1>
-				<h2 style={{ marginBottom: '0px', marginTop: '-10px' }}>
+				<h2 style={{ marginBottom: "0px", marginTop: "-10px" }}>
 					US $0.00/ Month
 				</h2>
 				<ul>
@@ -39,15 +39,15 @@ function Subscription() {
 				<img
 					src={Img}
 					style={{
-						height: '20%',
-						position: 'relative',
-						left: '1px',
-						marginTop: '0px',
+						height: "20%",
+						position: "relative",
+						left: "1px",
+						marginTop: "0px",
 					}}
 					alt="VoteaBLE Img"
 				/>
 				<h1>1 Month Access</h1>
-				<h2 style={{ marginBottom: '0px', marginTop: '-10px' }}>
+				<h2 style={{ marginBottom: "0px", marginTop: "-10px" }}>
 					US $10.00/ Month
 				</h2>
 				<ul>
@@ -61,9 +61,9 @@ function Subscription() {
 				<form
 					action={`https://voteable-backend.onrender.com/create-checkout-session/price_1LnSbdFoXys89NW0jPj1S16M`}
 					method="POST"
-					style={{ width: '85%' }}
+					style={{ width: "85%" }}
 				>
-					<button className="cBtn" style={{ width: '100%' }}>
+					<button className="cBtn" style={{ width: "100%" }}>
 						Checkout
 					</button>
 				</form>
@@ -71,11 +71,11 @@ function Subscription() {
 			<div className="subCard">
 				<img
 					src={Img}
-					style={{ height: '20%', position: 'relative', left: '1px' }}
+					style={{ height: "20%", position: "relative", left: "1px" }}
 					alt="VoteaBLE Img"
 				/>
 				<h1>6 Month Access</h1>
-				<h2 style={{ marginBottom: '0px', marginTop: '-10px' }}>
+				<h2 style={{ marginBottom: "0px", marginTop: "-10px" }}>
 					US $8.00/ Month
 				</h2>
 				<ul>
@@ -89,9 +89,9 @@ function Subscription() {
 				<form
 					action={`https://voteable-backend.onrender.com/create-checkout-session/price_1LnSfaFoXys89NW0HR8qqwId`}
 					method="POST"
-					style={{ width: '85%' }}
+					style={{ width: "85%" }}
 				>
-					<button className="cBtn" style={{ width: '100%' }}>
+					<button className="cBtn" style={{ width: "100%" }}>
 						Checkout
 					</button>
 				</form>
@@ -99,11 +99,11 @@ function Subscription() {
 			<div className="subCard">
 				<img
 					src={Img}
-					style={{ height: '20%', position: 'relative', left: '1px' }}
+					style={{ height: "20%", position: "relative", left: "1px" }}
 					alt="VoteaBLE Img"
 				/>
 				<h1>1 Year Access</h1>
-				<h2 style={{ marginBottom: '0px', marginTop: '-10px' }}>
+				<h2 style={{ marginBottom: "0px", marginTop: "-10px" }}>
 					US $5.00/ Month
 				</h2>
 				<ul>
@@ -117,9 +117,9 @@ function Subscription() {
 				<form
 					action={`https://voteable-backend.onrender.com/create-checkout-session/price_1LnSjDFoXys89NW0yado7YFk`}
 					method="POST"
-					style={{ width: '85%' }}
+					style={{ width: "85%" }}
 				>
-					<button className="cBtn" style={{ width: '100%' }}>
+					<button className="cBtn" style={{ width: "100%" }}>
 						Checkout
 					</button>
 				</form>
